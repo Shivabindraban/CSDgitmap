@@ -2,7 +2,7 @@ import simpleaudio as sa
 # ^enable-t geluid module
 import time
 # ^enable-t tijd/delay module
-# wave_obj = sa.WaveObject.from_wave_file("/mnt/d/Samples/Camou's Selection/Kick/kick.wav")
+Kick = sa.WaveObject.from_wave_file("/media/shiva/Data/Samples/Linuxmap/kick.wav")
 # ^ Laadt sample in
 sequenceList=[]
 # ^ Maakt lege lijst aan, waar de aan te geven nootlengtewaardes in komen
@@ -21,6 +21,6 @@ for sequence in sequenceList:
     sequence = float(sequence)
     print("dong")
     print(wholeNoteLen/sequence, "ms")
-    # play_obj = wave_obj.play()
+    play_obj = Kick.play()
     time.sleep((wholeNoteLen/sequence)/1000)
     # ^ speelt de sample af met elke aangegeven nootlengtewaarde van de  sequenceList en houdt dit als delaytijd aan voor de volgende
