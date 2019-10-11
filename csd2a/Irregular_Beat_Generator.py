@@ -3,10 +3,10 @@ import time
 import random
 
 # NOTE:  load multiple audioFiles and store it into a list
-synth = sa.WaveObject.from_wave_file("../audioFiles/Synth.wav")
-hit = sa.WaveObject.from_wave_file("../audioFiles/Hit_mid.wav")
-kick = sa.WaveObject.from_wave_file("../audioFiles/Kick_orchest.wav")
-pop = sa.WaveObject.from_wave_file("../audioFiles/Pop.wav")
+synth = sa.WaveObject.from_wave_file("Samples_for_IBG/Synth.wav")
+hit = sa.WaveObject.from_wave_file("Samples_for_IBG/Hit_mid.wav")
+kick = sa.WaveObject.from_wave_file("Samples_for_IBG/Kick_orchest.wav")
+pop = sa.WaveObject.from_wave_file("Samples_for_IBG/Pop.wav")
 
 samples = [kick, synth, hit, pop]
 
