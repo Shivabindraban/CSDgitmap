@@ -57,7 +57,7 @@ elif timeSig_2 == 8:
     measureLength = timeSig_1 * (quarterNote/2)
 sixteenthAmount = int(measureLength / sixteenthNoteLength)
 
-# NOTE: make patterns to play
+# NOTE: make 3 patterns to play
 sound1list=[]
 sound2list=[]
 sound3list=[]
@@ -137,20 +137,20 @@ while True:
         print("You did not insert a number, try again")
 
 
-# NOTE: This loop determines how many the origal loop should play
+# NOTE: This loop determines how many times the original loop should play
 i=0
 while i < loopAmount:
-    i+=1 # For meeting the loopAmount
+    i+=1 # For matching the loopAmount
     x=0
-    # To go through each element of the timestamp. The loop will play x=1-5. When the 4th sample is played, the next x will be 0 because of the modulo.
-    # This 0 will cause next sample to play, but will break the loop after, since 0 < 1.
     startTime = time.time()
     while True:
-        # retrieve current time
-        currentTime = time.time()
+        currentTime = time.time() # retrieve current time
+        # This statement will start with 0 and start instantly, since x is given 0 at start.
         if((currentTime - startTime) >= (sixteenthNoteLength * x)):
             sample_poly()
             print(x)
+            # The loop should break after the last sixteenth amount is played and stop counting afterwarts.
+            # If you have a 4/4th measure with 16 sixteenths, the statement checks from 0-15 (16 times)
             if x == (sixteenthAmount - 1):
                 break
             else:
