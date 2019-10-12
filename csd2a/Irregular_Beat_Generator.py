@@ -1,6 +1,7 @@
 import simpleaudio as sa
 import time
 import random
+from midiutil import MIDIFile
 
 # NOTE:  load multiple audioFiles and store it into a list
 synth = sa.WaveObject.from_wave_file("Samples_for_IBG/Synth.wav")
@@ -18,9 +19,9 @@ while True:
     try:
         BPM = int(input())
         if BPM < 60:
-            print("bpm value too Low, enter a number between 50 and 200:")
+            print("bpm value too Low, enter a number between 60 and 200:")
         elif BPM > 200:
-            print("bpm value too High, enter a number between 50 and 200:")
+            print("bpm value too High, enter a number between 60 and 200:")
         else:
             print("\nbpm succesfully set at " + str(BPM) + " bpm." )
             break
@@ -55,80 +56,105 @@ if timeSig_2 == 4:
 elif timeSig_2 == 8:
     measureLength = timeSig_1 * (quarterNote/2)
 sixteenthAmount = int(measureLength / sixteenthNoteLength)
-print(sixteenthAmount)
+
+# NOTE: make patterns to play
+sound1list=[]
+sound2list=[]
+sound3list=[]
+a=0
+while a<sixteenthAmount:
+    print(a)
+    if a%4==0:
+        sound1list.append(1)
+    else:
+        sound1list.append(0)
+    a+=1
+b=0
+while b <sixteenthAmount:
+    print(b)
+    if b%8==0:
+        sound2list.append(1)
+    else:
+        sound2list.append(0)
+    b+=1
+c=0
+while c<sixteenthAmount:
+    print(c)
+    if c%4==0:
+        sound3list.append(0)
+    else:
+        sound3list.append(1)
+    c+=1
+
+print(sound1list)
+print(sound2list)
+print(sound3list)
+
+#MIDI file write
+degrees  = sound1list # MIDI note number
+track    = 0
+channel  = 9
+timer    = 0   # In beats
+tempo    = BPM  # In BPM
+volume   = 100 # 0-127, as per the MIDI standard
+
+MyMIDI = MIDIFile(1) # One track, defaults to format 1 (tempo track automatically created)
+MyMIDI.addTempo(track, timer, tempo)
+
+for volume in degrees:
+    MyMIDI.addNote(track, channel, 36, timer, 0.25, volume*100)
+    timer = timer + 0.25
+
+degrees = sound2list
+timer = 0
+for volume in degrees:
+    MyMIDI.addNote(track, channel, 38, timer, 0.25, volume*100)
+    timer = timer + 0.25
+
+degrees = sound3list
+timer = 0
+for volume in degrees:
+    MyMIDI.addNote(track, channel, 42, timer, 0.25, volume*100)
+    timer = timer + 0.25
+
+with open("midi_IBG.mid", "wb") as output_file:
+    MyMIDI.writeFile(output_file)
+
+def sample_poly():
+    if sound1list[x] == 1:
+        hit.play()
+    if sound2list[x] == 1:
+        synth.play()
+    if sound3list[x] == 1:
+        pop.play()
+
+# NOTE: This loop forces you to enter a (correct) number to determine how many times to loop the sequence
+while True:
+    try:
+        loopAmount=int(input("How many times do you want to hear a sequence? > "))
+        break
+    except ValueError:
+        print("You did not insert a number, try again")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# # NOTE: a made up set of of 16th noteDurations
-# abstractNoteDurationList = [0.0,0.5,0.5,1,0.75]
-# timestamps16th = []
-# timestamps=[]
-#
-#
-#
-# # NOTE: converts the note durations to abstract timestamps
-# def durationsToTimestamps16th(abstractNoteDurationList):
-#     currentTimestamp= 0
-#     for abstractNoteDuration in abstractNoteDurationList:
-#         # the adding of currentTimestamp is needed to make the list cumulative
-#         timestamps16th.append(int(abstractNoteDuration*4 + currentTimestamp))
-#         currentTimestamp = abstractNoteDuration*4 + currentTimestamp
-#
-# durationsToTimestamps16th(abstractNoteDurationList)
-# print("this will be your sequence list ", timestamps16th)
-#
-# # NOTE: converts the abstract timestamps to timestamps in seconds with selected BPM
-# def realTimeTimestamps(sixteenthNoteLength,timestamps16th):
-#     for timestamp in timestamps16th:
-#         timestamps.append(timestamp * sixteenthNoteLength)
-#
-# realTimeTimestamps(sixteenthNoteLength,timestamps16th)
-#
-# # NOTE: THis loop forces you to enter a (correct) number to determine how many times to loop the sequence
-# while True:
-#     try:
-#         loopAmount=int(input("How many times do you want to hear a sequence? > "))
-#         break
-#     except ValueError:
-#         print("You did not insert a number, try again")
-#
-# abstractNoteDurationList = [0.0,0.5,0.5,1,0.75]
-#
-# # NOTE: This loop determines how many the origal loop should play
-# i=0
-# while i < loopAmount:
-#     i+=1 # For meeting the loopAmount
-#     x=1
-#     # To go through each element of the timestamp. The loop will play x=1-5. When the 4th sample is played, the next x will be 0 because of the modulo.
-#     # This 0 will cause next sample to play, but will break the loop after, since 0 < 1.
-#     startTime = time.time()
-#     loopplay=True
-#     while loopplay==True:
-#         # retrieve current time
-#         currentTime = time.time()
-#         if(currentTime - startTime >= timestamps[x-1]):
-#             samples[3].play()
-#             if x >= 1:
-#                 x = (x + 1)%len(timestamps)
-#             else:
-#                 loopplay=False
-#         else:
-#             time.sleep(0.001)
-#     time.sleep(measureLength - timestamps[-1])
+# NOTE: This loop determines how many the origal loop should play
+i=0
+while i < loopAmount:
+    i+=1 # For meeting the loopAmount
+    x=0
+    # To go through each element of the timestamp. The loop will play x=1-5. When the 4th sample is played, the next x will be 0 because of the modulo.
+    # This 0 will cause next sample to play, but will break the loop after, since 0 < 1.
+    startTime = time.time()
+    while True:
+        # retrieve current time
+        currentTime = time.time()
+        if((currentTime - startTime) >= (sixteenthNoteLength * x)):
+            sample_poly()
+            print(x)
+            if x == (sixteenthAmount - 1):
+                break
+            else:
+                x = (x + 1)
+        else:
+            time.sleep(0.001)
+    time.sleep(measureLength - (sixteenthNoteLength * x))
