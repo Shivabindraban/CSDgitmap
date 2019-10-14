@@ -12,38 +12,43 @@ samples = [kick, synth, hit, pop]
 
 # NOTE: Variables
 BPM = 120
-
+# NOTE: Intro
+print("Welcome to Beat Generator V1!\nLets set up a sequence...\n---")
 # NOTE: This loop forces you to enter a (correct) BPM number
-print("Default bpm is set at " + str(BPM) + " bpm. Please enter a bpm number to adjust:")
+print("Default bpm is set at " + str(BPM) + ". Hit <ENTER> to keep it or enter a new bpm number to adjust:")
 while True:
     try:
-        BPM = int(input())
+        BPM = int(input() or 120)
         if BPM < 60:
             print("bpm value too Low, enter a number between 60 and 200:")
         elif BPM > 200:
             print("bpm value too High, enter a number between 60 and 200:")
         else:
-            print("\nbpm succesfully set at " + str(BPM) + " bpm." )
+            print("---\nbpm succesfully set at " + str(BPM) + " bpm." )
             break
     except ValueError:
         print("You did not insert a number, try again")
 
-
 # NOTE: determine the time signature
-print("We will now set up a timesignature \n-->")
+print("We will now set up a timesignature.")
+print("If you want quarter notes: Enter > 4 < || If you want eight notes, Enter > 8 <:")
 while True:
     try:
-        timeSig_2=int(input("If you want quarter notes, Enter > 4 < and If you want eight notes, Enter > 8 < :\n"))
+        timeSig_2=int(input() or 4)
         if timeSig_2 != 4 and timeSig_2 != 8:
             print("please Enter a 4 or 8")
         elif timeSig_2 == 4 or timeSig_2 == 8:
             break
     except ValueError:
         print("You did not insert a (whole) number, try again")
+print("How many do want of the chosen note length in one measure?\nPlease enter a number")
 while True:
     try:
-        timeSig_1=int(input("How many do you want of the chosen note length in one measure?\nPlease enter a number:\n" ))
-        break
+        timeSig_1=int(input() or 4)
+        if timeSig_1 < 3:
+            print("value too low. Please enter a number greater than 3:")
+        else:
+            break
     except ValueError:
         print("You did not insert a (whole) number, try again")
 print("timesignature succesfully set at " + str(timeSig_1) + " / " + str(timeSig_2))
@@ -63,7 +68,6 @@ sound2list=[]
 sound3list=[]
 a=0
 while a<sixteenthAmount:
-    print(a)
     if a%4==0:
         sound1list.append(1)
     else:
@@ -71,7 +75,6 @@ while a<sixteenthAmount:
     a+=1
 b=0
 while b <sixteenthAmount:
-    print(b)
     if b%8==0:
         sound2list.append(1)
     else:
@@ -79,7 +82,6 @@ while b <sixteenthAmount:
     b+=1
 c=0
 while c<sixteenthAmount:
-    print(c)
     if c%4==0:
         sound3list.append(0)
     else:
@@ -131,7 +133,7 @@ def sample_poly():
 # NOTE: This loop forces you to enter a (correct) number to determine how many times to loop the sequence
 while True:
     try:
-        loopAmount=int(input("How many times do you want to hear a sequence? > "))
+        loopAmount=int(input("How many times do you want to hear a sequence? > ") or 4)
         break
     except ValueError:
         print("You did not insert a number, try again")
@@ -157,4 +159,5 @@ while i < loopAmount:
                 x = (x + 1)
         else:
             time.sleep(0.001)
+    # To let the last sixteenth note ring out, since only 1 sixteenthNoteLength is left over in the calculation.
     time.sleep(measureLength - (sixteenthNoteLength * x))
