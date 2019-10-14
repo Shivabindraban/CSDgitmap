@@ -6,14 +6,15 @@ from midiutil import MIDIFile
 # NOTE:  load multiple audioFiles and store it into a list
 synth = sa.WaveObject.from_wave_file("Samples_for_IBG/Synth.wav")
 hit = sa.WaveObject.from_wave_file("Samples_for_IBG/Hit_mid.wav")
+lazer = sa.WaveObject.from_wave_file("Samples_for_IBG/Laser1.wav")
 kick = sa.WaveObject.from_wave_file("Samples_for_IBG/Kick_orchest.wav")
 pop = sa.WaveObject.from_wave_file("Samples_for_IBG/Pop.wav")
-samples = [kick, synth, hit, pop]
+samples = [kick, synth, lazer, hit, pop]
 
 # NOTE: Variables
 BPM = 120
 # NOTE: Intro
-print("Welcome to Beat Generator V1!\nLets set up a sequence...\n---")
+print("Welcome to Beat Generator V1!\nLets set up a sequence\n---")
 # NOTE: This loop forces you to enter a (correct) BPM number
 print("Default bpm is set at " + str(BPM) + ". Hit <ENTER> to keep it or enter a new bpm number to adjust:")
 while True:
@@ -24,13 +25,13 @@ while True:
         elif BPM > 200:
             print("bpm value too High, enter a number between 60 and 200:")
         else:
-            print("---\nbpm succesfully set at " + str(BPM) + " bpm." )
+            print("---\nbpm succesfully set at " + str(BPM) + " bpm.\n---" )
             break
     except ValueError:
         print("You did not insert a number, try again")
 
 # NOTE: determine the time signature
-print("We will now set up a timesignature.")
+print("We will now set up a timesignature>")
 print("If you want quarter notes: Enter > 4 < || If you want eight notes, Enter > 8 <:")
 while True:
     try:
@@ -51,7 +52,7 @@ while True:
             break
     except ValueError:
         print("You did not insert a (whole) number, try again")
-print("timesignature succesfully set at " + str(timeSig_1) + " / " + str(timeSig_2))
+print("timesignature succesfully set at " + str(timeSig_1) + " / " + str(timeSig_2) + "\n---")
 
 # NOTE: Calculate the length of a whole measure
 quarterNote = 60.0 / BPM
@@ -75,14 +76,16 @@ while a<sixteenthAmount:
     a+=1
 b=0
 while b <sixteenthAmount:
-    if b%8==0:
+    if b%4==0:
+        sound2list.append(0)
+    elif (random.randint(0, 100)) <= 60:
         sound2list.append(1)
     else:
         sound2list.append(0)
     b+=1
 c=0
 while c<sixteenthAmount:
-    if c%4==0:
+    if (random.randint(0, 100)) >= 50:
         sound3list.append(0)
     else:
         sound3list.append(1)
@@ -126,7 +129,7 @@ def sample_poly():
     if sound1list[x] == 1:
         hit.play()
     if sound2list[x] == 1:
-        synth.play()
+        lazer.play()
     if sound3list[x] == 1:
         pop.play()
 
