@@ -14,7 +14,7 @@ samples = [kick, synth, lazer, hit, pop]
 # NOTE: Variables
 BPM = 120
 # NOTE: Intro
-print("Welcome to Beat Generator V1!\nLets set up a sequence\n---")
+print("Welcome to Beat Generator V1!\nAfter your setup, a MIDI file will be saved.\nLets set up a sequence\n---")
 # NOTE: This loop forces you to enter a (correct) BPM number
 print("Default bpm is set at " + str(BPM) + ". Hit <ENTER> to keep it or enter a new bpm number to adjust:")
 while True:
@@ -42,7 +42,7 @@ while True:
             break
     except ValueError:
         print("You did not insert a (whole) number, try again")
-print("How many do want of the chosen note length in one measure?\nPlease enter a number")
+print("How many do you want of the chosen note length in one measure?\nPlease enter a number")
 while True:
     try:
         timeSig_1=int(input() or 4)
@@ -70,7 +70,10 @@ sound3list=[]
 a=0
 while a<sixteenthAmount:
     if a%4==0:
-        sound1list.append(1)
+        if random.randint(0, 100) <= 90:
+            sound1list.append(1)
+        else:
+            sound1list.append(0)
     else:
         sound1list.append(0)
     a+=1
@@ -137,7 +140,10 @@ def sample_poly():
 while True:
     try:
         loopAmount=int(input("How many times do you want to hear a sequence? > ") or 4)
-        break
+        if loopAmount < 1:
+            print("value too low. Please enter a (whole) number greater than 0:")
+        else:
+            break
     except ValueError:
         print("You did not insert a number, try again")
 
@@ -164,3 +170,6 @@ while i < loopAmount:
             time.sleep(0.001)
     # To let the last sixteenth note ring out, since only 1 sixteenthNoteLength is left over in the calculation.
     time.sleep(measureLength - (sixteenthNoteLength * x))
+
+print("All done! Midi file is saved")
+# sys.exit()
