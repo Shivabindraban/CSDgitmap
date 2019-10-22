@@ -11,6 +11,8 @@ kick = sa.WaveObject.from_wave_file("Samples_for_IBG/Kick_orchest.wav")
 pop = sa.WaveObject.from_wave_file("Samples_for_IBG/Pop.wav")
 samples = [kick, synth, lazer, hit, pop]
 
+words = ["please", "would you please", "come on please"]
+
 # NOTE: Variables
 BPM = 120
 # NOTE: Intro
@@ -28,7 +30,7 @@ while True:
             print("---\nbpm succesfully set at " + str(BPM) + " bpm.\n---" )
             break
     except ValueError:
-        print("You did not insert a number, try again")
+        print("You did not insert a (whole) number, " + str(words[random.randint(0, 2)]) + " try again")
 
 # NOTE: determine the time signature
 print("We will now set up a timesignature>")
@@ -41,7 +43,7 @@ while True:
         elif timeSig_2 == 4 or timeSig_2 == 8:
             break
     except ValueError:
-        print("You did not insert a (whole) number, try again")
+        print("You did not insert a (whole) number, " + str(words[random.randint(0, 2)]) + " try again")
 print("How many do you want of the chosen note length in one measure?\nPlease enter a number")
 while True:
     try:
@@ -51,7 +53,7 @@ while True:
         else:
             break
     except ValueError:
-        print("You did not insert a (whole) number, try again")
+        print("You did not insert a (whole) number, " + str(words[random.randint(0, 2)]) + " try again")
 print("timesignature succesfully set at " + str(timeSig_1) + " / " + str(timeSig_2) + "\n---")
 
 # NOTE: Calculate the length of a whole measure
@@ -98,36 +100,6 @@ print(sound1list)
 print(sound2list)
 print(sound3list)
 
-#MIDI file write
-degrees  = sound1list # MIDI note number
-track    = 0
-channel  = 9
-timer    = 0   # In beats
-tempo    = BPM  # In BPM
-volume   = 100 # 0-127, as per the MIDI standard
-
-MyMIDI = MIDIFile(1) # One track, defaults to format 1 (tempo track automatically created)
-MyMIDI.addTempo(track, timer, tempo)
-
-for volume in degrees:
-    MyMIDI.addNote(track, channel, 36, timer, 0.25, volume*100)
-    timer = timer + 0.25
-
-degrees = sound2list
-timer = 0
-for volume in degrees:
-    MyMIDI.addNote(track, channel, 38, timer, 0.25, volume*100)
-    timer = timer + 0.25
-
-degrees = sound3list
-timer = 0
-for volume in degrees:
-    MyMIDI.addNote(track, channel, 42, timer, 0.25, volume*100)
-    timer = timer + 0.25
-
-with open("midi_IBG.mid", "wb") as output_file:
-    MyMIDI.writeFile(output_file)
-
 def sample_poly():
     if sound1list[x] == 1:
         hit.play()
@@ -142,6 +114,8 @@ while True:
         loopAmount=int(input("How many times do you want to hear a sequence? > ") or 4)
         if loopAmount < 1:
             print("value too low. Please enter a (whole) number greater than 0:")
+        elif loopAmount > 16:
+            print("value too High. Please enter a (whole) number smaller than 16:")
         else:
             break
     except ValueError:
@@ -159,7 +133,7 @@ while i < loopAmount:
         # This statement will start with 0 and start instantly, since x is given 0 at start.
         if((currentTime - startTime) >= (sixteenthNoteLength * x)):
             sample_poly()
-            print(x)
+            # print(x)
             # The loop should break after the last sixteenth amount is played and stop counting afterwarts.
             # If you have a 4/4th measure with 16 sixteenths, the statement checks from 0-15 (16 times)
             if x == (sixteenthAmount - 1):
@@ -171,5 +145,45 @@ while i < loopAmount:
     # To let the last sixteenth note ring out, since only 1 sixteenthNoteLength is left over in the calculation.
     time.sleep(measureLength - (sixteenthNoteLength * x))
 
-print("All done! Midi file is saved")
+print("All done playing!\nNow would you like to safe the MIDI file? (P.S. My choice would be yes)\nPlease Enter a Y or N")
+while True:
+    MIDIsafe=input()
+    if MIDIsafe !="Y" and MIDIsafe !="N":
+        print("Please Enter a Y or N")
+    else:
+        break
+
+if MIDIsafe == "Y":
+    #MIDI file write
+    degrees  = sound1list # MIDI note number
+    track    = 0
+    channel  = 9
+    timer    = 0   # In beats
+    tempo    = BPM  # In BPM
+    volume   = 100 # 0-127, as per the MIDI standard
+
+    MyMIDI = MIDIFile(1) # One track, defaults to format 1 (tempo track automatically created)
+    MyMIDI.addTempo(track, timer, tempo)
+
+    for volume in degrees:
+        MyMIDI.addNote(track, channel, 36, timer, 0.25, volume*100)
+        timer = timer + 0.25
+
+    degrees = sound2list
+    timer = 0
+    for volume in degrees:
+        MyMIDI.addNote(track, channel, 38, timer, 0.25, volume*100)
+        timer = timer + 0.25
+
+    degrees = sound3list
+    timer = 0
+    for volume in degrees:
+        MyMIDI.addNote(track, channel, 42, timer, 0.25, volume*100)
+        timer = timer + 0.25
+
+    with open("midi_IBG.mid", "wb") as output_file:
+        MyMIDI.writeFile(output_file)
+    print("All done! Midi file is saved in the same directory")
+else:
+    print("File not saved. Have a nice day.")
 # sys.exit()
