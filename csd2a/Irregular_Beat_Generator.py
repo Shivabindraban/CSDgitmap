@@ -73,7 +73,6 @@ a=0
 aCount=0
 while a<sixteenthAmount:
     if a%4==0:
-        print(aCount)
         if aCount <= 2:
             sound1list.append(1)
         else:
