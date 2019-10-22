@@ -83,10 +83,21 @@ b=0
 while b <sixteenthAmount:
     if b%4==0:
         sound2list.append(0)
-    elif (random.randint(0, 100)) <= 60:
-        sound2list.append(1)
+    elif b%4==1:
+        if (random.randint(0, 100)) <= 40:
+            sound2list.append(1)
+        else:
+            sound2list.append(0)
+    elif b%4==2:
+        if (random.randint(0, 100)) <= 80:
+            sound2list.append(1)
+        else:
+            sound2list.append(0)
     else:
-        sound2list.append(0)
+        if (random.randint(0, 100)) <= 60:
+            sound2list.append(1)
+        else:
+            sound2list.append(0)
     b+=1
 c=0
 while c<sixteenthAmount:
