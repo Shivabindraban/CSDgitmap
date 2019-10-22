@@ -70,15 +70,22 @@ sound1list=[]
 sound2list=[]
 sound3list=[]
 a=0
+aCount=0
 while a<sixteenthAmount:
     if a%4==0:
-        if random.randint(0, 100) <= 90:
+        print(aCount)
+        if aCount <= 2:
             sound1list.append(1)
         else:
-            sound1list.append(0)
+            if random.randint(0, 100) <= 50:
+                sound1list.append(1)
+            else:
+                sound1list.append(0)
+        aCount =  aCount + 1
     else:
         sound1list.append(0)
     a+=1
+
 b=0
 while b <sixteenthAmount:
     if b%4==0:
