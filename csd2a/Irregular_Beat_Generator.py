@@ -77,7 +77,7 @@ while a<sixteenthAmount:
         if aCount <= 2:
             sound1list.append(1)
         else:
-            if random.randint(0, 100) <= 50:
+            if random.randint(0, 100) <= 90:
                 sound1list.append(1)
             else:
                 sound1list.append(0)
