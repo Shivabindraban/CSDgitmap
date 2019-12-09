@@ -12,10 +12,6 @@ Instrument::~Instrument(){
   // cout << "\nInstrument - Destructor\n";
 }
 
-void Instrument::play(string sound, string frequency){
-  cout << instrumentType << " plays " << sound << " at " << frequency << " Hz \n";
-}
-
 void Instrument::pitch(int freqRange){
   if (freqRange == 1)
   {
@@ -29,4 +25,8 @@ void Instrument::pitch(int freqRange){
   {
     cout << "The frequency range for  "<< instrumentType << " is in the mid range (4000 - 20000 Hz) \n";
   }
+}
+
+void Instrument::play(string sound, int frequency){
+  cout << instrumentType << " plays " << sound << " at " << frequency << " Hz \n";
 }

@@ -14,7 +14,3 @@ Percussion::~Percussion(){
 void Percussion::pitchGlide(){
   cout << "pitch gliding applied for " << instrumentType << "\n";
 }
-
-void Percussion::shortDecay(){
-  cout << instrumentType << " will have a short decay\n";
-}

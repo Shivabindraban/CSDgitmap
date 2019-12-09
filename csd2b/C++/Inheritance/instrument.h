@@ -9,15 +9,15 @@ public:
   ~Instrument(); // destructor
 
   // method declarations (functies)
-  void play(string sound, string frequency);
+  void play(string sound, int frequency);
   void pitch(int freqRange);
 
   // fields (variabelen aanmaken)
 
 protected: // het is protected ipv private, zodat andere subclasses ervan kan lenen.
   string instrumentType;
-  string freqRange;
+  int freqRange;
   string sound;
-  string frequency;
+  int frequency;
 };
 #endif
