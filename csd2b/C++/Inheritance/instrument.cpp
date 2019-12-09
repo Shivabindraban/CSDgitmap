@@ -13,5 +13,5 @@ Instrument::~Instrument(){
 }
 
 void Instrument::play(string sound, string frequency){
-  cout << instrumentType << "plays" << sound << "at" << frequency << " Hz \n";
+  cout << instrumentType << " plays " << sound << " at " << frequency << " Hz \n";
 }

@@ -8,10 +8,10 @@ int main(){
   Percussion percussion2("Snare", "200-500");
   Strings string1("Guitar", "200-2000");
   Strings string2("violin", "400-4000");
-  Strings string3("ViolinPluck, 200-500");
+  Strings string3("ViolinPluck", "200-500");
 
   percussion1.play("boom", "50");
-  percussion2.play("kets". "400");
+  percussion2.play("kets", "400");
   string1.play("ting", "50");
   string2.play("ieh", "600");
   string3.play("ploek", "300");

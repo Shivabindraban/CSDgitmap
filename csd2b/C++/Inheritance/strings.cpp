@@ -12,6 +12,6 @@ Strings::~Strings(){
   cout << "Following String instrument instance destructed: " << instrumentType << "\n";
 }
 
-void String::pluck(){
+void Strings::pluck(){
   cout << "plucking applied for " << instrumentType << "\n";
 }
