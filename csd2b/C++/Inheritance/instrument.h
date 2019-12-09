@@ -1,12 +1,9 @@
-// In de .h files voeg je de classes toe
 #ifndef _INS_H_
 #define _INS_H_
-
+#include <iostream>
 using namespace std;
-#include <string>
 
-class Instrument
-{
+class Instrument{
 public:
   Instrument(string instrumentType, string freqRange); // constructor
   ~Instrument(); // destructor
@@ -23,5 +20,4 @@ protected: // het is protected ipv private, zodat andere subclasses ervan kan le
   string sound;
   string frequency;
 };
-
 #endif

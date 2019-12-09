@@ -1,23 +1,17 @@
-#include <iostream>
-#include "inheritance.h"
+#include "instrument.h"
 using namespace std;
 // [return valuetype] functionName(parameters)
 
-
-Instrument::Instrument(string instrumentName)
-{
+Instrument::Instrument(string instrumentType, string freqRange){
   cout << "\nInstrument - Constructor\n";
-  this->instrumentName = instrumentName;
-  cout << "Following instrument instance created: " << instrumentName << "\n";
-
-
+  cout << "Following instrument instance created: " << instrumentType << "\n";
+  this->instrumentType = instrumentType;
 }
-Instrument::~Instrument()
-{
+
+Instrument::~Instrument(){
   cout << "\nInstrument - Destructor\n";
 }
 
-void Instrument::play()
-{
-  cout << sound << endl;
+void Instrument::play(string sound, string frequency){
+  cout << instrumentType << "plays" << sound << "at" << frequency << " Hz \n";
 }
