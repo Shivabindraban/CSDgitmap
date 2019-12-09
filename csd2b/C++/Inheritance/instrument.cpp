@@ -4,7 +4,7 @@ using namespace std;
 
 Instrument::Instrument(string instrumentType, string freqRange){
   cout << "\nInstrument - Constructor\n";
-  cout << "Following instrument instance created: " << instrumentType << "\n";
+  // cout << "Following instrument instance created: " << instrumentType << "\n";
   this->instrumentType = instrumentType;
 }
 
