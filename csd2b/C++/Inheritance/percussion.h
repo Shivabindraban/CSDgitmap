@@ -3,8 +3,9 @@ using namespace std;
 
 class Percussion : public Instrument{
 public:
-  Percussion(string instrumentType, string freqRange); //Constructor
+  Percussion(string instrumentType); //Constructor
   ~Percussion();//Deconstructor
 
-  void pluck(); //method
+  void pitchGlide(); //method
+  void shortDecay();
 };

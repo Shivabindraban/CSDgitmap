@@ -5,12 +5,12 @@ using namespace std;
 
 class Instrument{
 public:
-  Instrument(string instrumentType, string freqRange); // constructor
+  Instrument(string instrumentType); // constructor
   ~Instrument(); // destructor
 
   // method declarations (functies)
   void play(string sound, string frequency);
-
+  void pitch(int freqRange);
 
   // fields (variabelen aanmaken)
 

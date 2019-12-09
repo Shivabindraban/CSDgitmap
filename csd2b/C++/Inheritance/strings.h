@@ -3,7 +3,7 @@ using namespace std;
 
 class Strings : public Instrument{
 public:
-  Strings(string instrumentType, string freqRange); //Constructor
+  Strings(string instrumentType); //Constructor
   ~Strings();//Deconstructor
 
   void pluck();

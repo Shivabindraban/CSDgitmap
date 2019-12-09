@@ -3,13 +3,13 @@ using namespace std;
 // [return valuetype] functionName(parameters)
 
 
-Strings::Strings(string instrumentType, string freqRange) : Instrument(instrumentType, freqRange){
+Strings::Strings(string instrumentType) : Instrument(instrumentType){
   this->instrumentType = instrumentType;
-  cout << "Following String instrument instance constructed: " << instrumentType << " with frequency range " << freqRange << " in Hz\n";
+  cout << "Following String instrument instance constructed: " << instrumentType << "\n";
 }
 
 Strings::~Strings(){
-  cout << "Following String instrument instance destructed: " << instrumentType << "\n";
+  // cout << "Following String instrument instance destructed: " << instrumentType << "\n";
 }
 
 void Strings::pluck(){
