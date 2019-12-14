@@ -1,13 +1,11 @@
 #include <iostream>
 #include <thread>
-#include "sine.h"
+#include "synth.h"
 
 using namespace std;
 
 int main(int argc, char **argv){
-  Sine sine1;
-  sine1.frequency(220);
-  sine1.amplitude(0.5);
-
+  Synth synth1;
+  synth1.additive(220,0.7);
   return 0;
 }
