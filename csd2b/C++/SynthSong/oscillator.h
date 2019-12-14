@@ -12,16 +12,16 @@ public:
   ~Oscillator();
 
   //getters and setters
-  void setFrequency(float frequency);
-  void setAmplitude(float amplitude);
+  void frequency(float freq);
+  void amplitude(float amp);
   //return the current sample
   float getSample();
 
 
 
 protected:
-  float frequency;
-  float amplitude;
+  float freq;
+  float amp;
   float phase;
   // contains the current sample
   float sample;

@@ -11,6 +11,6 @@ Sine::~Sine() {
 
 // sine wave formula
 void Sine::tick(double samplerate) {
- phase += frequency / samplerate;
- sample = amplitude * (sin(phase * PI_2));
+ phase += freq / samplerate;
+ sample = amp * (sin(phase * PI_2));
 }

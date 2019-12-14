@@ -8,12 +8,12 @@ Oscillator::~Oscillator() {
   cout << "Oscillator destructor" << endl;
 }
 
-void Oscillator::setFrequency(float frequency) {
-  this->frequency = frequency;
+void Oscillator::frequency(float freq) {
+  this->freq = freq;
 }
 
-void Oscillator::setAmplitude(float amplitude) {
-  this->amplitude = amplitude;
+void Oscillator::amplitude(float amp) {
+  this->amp = amp;
 }
 
 float Oscillator::getSample() {
