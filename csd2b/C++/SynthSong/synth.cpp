@@ -14,27 +14,27 @@ Synth::~Synth(){
   cout << "Synth destructor" << endl;
 }
 
-int Synth::additive(float frequency, float amplitude)
-{
+int Synth::additive(float frequency, float amplitude){
   JackModule jack;
-  jack.init(argv[0]);
+  jack.init();
   double samplerate = jack.getSamplerate();
-  Sine sine1;
-  Sine sine2;
-  sine1.frequency(frequency);
-  sine2.frequency(frequency*2.5);
-  sine1.amplitude(amplitude);
-  sine2.amplitude(1-amplitude);
 
-  //assign a function to the JackModule::onProces
-  jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
-     jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
+    Sine sine1;
+    Sine sine2;
+    sine1.frequency(frequency);
+    sine2.frequency(frequency*2.5);
+    sine1.amplitude(amplitude);
+    sine2.amplitude(1-amplitude);
 
-    for(unsigned int i = 0; i < nframes; i++) {
-      outBuf[i] = sine1.getSample() + sine2.getSample();
-      sine1.tick(samplerate);
-      sine2.tick(samplerate);
-    }
+    //assign a function to the JackModule::onProces
+    jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
+       jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
+
+      for(unsigned int i = 0; i < nframes; i++) {
+        outBuf[i] = sine1.getSample() + sine2.getSample();
+        sine1.tick(samplerate);
+        sine2.tick(samplerate);
+      }
 
     return 0;
   };
@@ -54,6 +54,5 @@ int Synth::additive(float frequency, float amplitude)
         break;
     }
   }
-
   return 0;
 }
