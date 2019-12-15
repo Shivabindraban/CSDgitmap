@@ -87,10 +87,45 @@ int Synth::FM(float frequency1, float frequency2, float Harmocity){
         sine1.tick(samplerate);
         sine2.tick(samplerate);
         outBuf[i] = sine1.getSample() + sine2.getSample();
-        sine1.tick(samplerate);
-        sine2.tick(samplerate);
+        // sine(sine()*Harmocity)
       }
 
+    return 0;
+  };
+
+  jack.autoConnect();
+
+  //keep the program running and listen for user input, q = quit
+  std::cout << "\n\nPress 'q' when you want to quit the program.\n";
+  bool running = true;
+  while (running)
+  {
+    switch (std::cin.get())
+    {
+      case 'q':
+        running = false;
+        jack.end();
+        break;
+    }
+  }
+  return 0;
+}
+
+int Synth::AM(float frequency1, float frequency2){
+  JackModule jack;
+  jack.init();
+  double samplerate = jack.getSamplerate();
+    Sine  sine1(  frequency1, 0.5);
+    Sine  sine2(  frequency2, 0.5);
+    //assign a function to the JackModule::onProces
+    jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
+       jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
+
+      for(unsigned int i = 0; i < nframes; i++) {
+        sine1.tick(samplerate);
+        sine2.tick(samplerate);
+        outBuf[i] = (sine1.getSample() * ((sine2.getSample()/2)+1/2));
+      }
     return 0;
   };
 
