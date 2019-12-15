@@ -21,19 +21,23 @@ int Synth::additive(float frequency, float amplitude){
 
     Sine sine1;
     Sine sine2;
+    Sine sine3;
     sine1.frequency(frequency);
-    sine2.frequency(frequency*2.5);
+    sine2.frequency(frequency*(3/2));
+    sine3.frequency(frequency*(5/2));
     sine1.amplitude(amplitude);
-    sine2.amplitude(1-amplitude);
+    sine2.amplitude((1-amplitude)/2);
+    sine3.amplitude((1-amplitude)/2);
 
     //assign a function to the JackModule::onProces
     jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
        jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
 
       for(unsigned int i = 0; i < nframes; i++) {
-        outBuf[i] = sine1.getSample() + sine2.getSample();
+        outBuf[i] = sine1.getSample() + sine2.getSample() + sine3.getSample();
         sine1.tick(samplerate);
         sine2.tick(samplerate);
+        sine3.tick(samplerate);
       }
 
     return 0;
