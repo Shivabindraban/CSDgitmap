@@ -2,8 +2,8 @@
 #include "math.h"
 
 Saw::Saw(float freq, float amp) : Oscillator(freq, amp) {
-  this->freq = freq;
-  this->amp = amp;
+  // this->freq = freq;
+  // this->amp = amp;
   cout << "Saw constructor" << endl;
 }
 Saw::~Saw() {
