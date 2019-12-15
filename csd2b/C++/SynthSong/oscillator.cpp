@@ -1,19 +1,13 @@
 #include "oscillator.h"
 
-Oscillator::Oscillator() {
+Oscillator::Oscillator(float freq, float amp) {
+  this->freq = freq;
+  this->amp = amp;
   cout << "Oscillator constructor" << endl;
 }
 
 Oscillator::~Oscillator() {
   cout << "Oscillator destructor" << endl;
-}
-
-void Oscillator::frequency(float freq) {
-  this->freq = freq;
-}
-
-void Oscillator::amplitude(float amp) {
-  this->amp = amp;
 }
 
 float Oscillator::getSample() {

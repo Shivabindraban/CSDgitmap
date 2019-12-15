@@ -6,7 +6,7 @@ using namespace std;
 
 class Saw : public Oscillator {
 public:
-  Saw();
+  Saw(float freq, float amp);
   ~Saw();
 
   void tick(double samplerate);

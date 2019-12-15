@@ -1,8 +1,10 @@
 #include "square.h"
 #include "math.h"
 
-Square::Square() : Oscillator() {
+Square::Square(float freq, float amp) : Oscillator(freq, amp) {
   cout << "Square constructor" << endl;
+  this->freq = freq;
+  this->amp = amp;
 }
 Square::~Square() {
   cout << "Square destructor" << endl;

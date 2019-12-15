@@ -6,10 +6,9 @@ using namespace std;
 
 class Sine : public Oscillator {
 public:
- Sine();
- ~Sine();
+  Sine(float freq, float amp);
+  ~Sine();
 
  void tick(double samplerate);
 };
-
 #endif

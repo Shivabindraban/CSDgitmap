@@ -3,6 +3,8 @@
 #include "jack_module.h"
 #include "math.h"
 #include "sine.h"
+#include "saw.h"
+#include "square.h"
 // #include "sineLFO.h"
 #include "oscillator.h"
 #include "synth.h"
@@ -19,25 +21,19 @@ int Synth::additive(float frequency, float amplitude){
   jack.init();
   double samplerate = jack.getSamplerate();
 
-    Sine sine1;
-    Sine sine2;
-    Sine sine3;
-    sine1.frequency(frequency);
-    sine2.frequency(frequency*(3/2));
-    sine3.frequency(frequency*(5/2));
-    sine1.amplitude(amplitude);
-    sine2.amplitude((1-amplitude)/2);
-    sine3.amplitude((1-amplitude)/2);
+    Sine sine1(frequency,amplitude*0.5);
+    Saw saw1(frequency*2.5,amplitude/8);
+    Square square1(frequency/4, amplitude/8);
 
     //assign a function to the JackModule::onProces
     jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
        jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
 
       for(unsigned int i = 0; i < nframes; i++) {
-        outBuf[i] = sine1.getSample() + sine2.getSample() + sine3.getSample();
+        outBuf[i] = sine1.getSample() + saw1.getSample() + square1.getSample();
         sine1.tick(samplerate);
-        sine2.tick(samplerate);
-        sine3.tick(samplerate);
+        saw1.tick(samplerate);
+        square1.tick(samplerate);
       }
 
     return 0;

@@ -8,16 +8,10 @@ using namespace std;
 class Oscillator{
 public:
   //Constructor and destructor
-  Oscillator();
+  Oscillator(float freq, float amp);
   ~Oscillator();
-
-  //getters and setters
-  void frequency(float freq);
-  void amplitude(float amp);
   //return the current sample
   float getSample();
-
-
 
 protected:
   float freq;

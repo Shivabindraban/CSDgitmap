@@ -6,7 +6,7 @@ using namespace std;
 
 class Square : public Oscillator {
 public:
-  Square();
+  Square(float freq, float amp);
   ~Square();
 
   void tick(double samplerate);
