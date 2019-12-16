@@ -2,9 +2,9 @@
 
 Oscillator::Oscillator(float freq, float amp) {
   cout << "Oscillator constructor" << endl;
-  if (freq < 50 || freq > 500){
+  if (freq < 0 || freq > 500){
     cout << "Value Error, frequency can only be between 50 and 500" << endl;
-    this->freq = 220;
+    this->freq = 10;
   }
   else {
     this->freq = freq;

@@ -4,14 +4,15 @@
 using namespace std;
 
 
+
 int main(int argc, char **argv){
+
   cout << "Hey! I will present to you some synths. \nHere we go!\n" << endl;
 
-
   Synth synth1;
-  Synth synth2;
-  Synth synth3;
-  synth1.additive(400,0.6);
+  // Synth synth2;
+  // Synth synth3;
+  synth1.additive(400,1);
   // synth2.FM(200,400,1);
   // synth3.AM(300,150);
 

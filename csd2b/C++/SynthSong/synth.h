@@ -11,7 +11,6 @@ public:
 int argc;
 char **argv;
 int additive(float frequency, float amplitude);
-int FM(float frequency1, float frequency2, float Harmocity);
 int AM(float frequency1, float frequency2);
 };
 
