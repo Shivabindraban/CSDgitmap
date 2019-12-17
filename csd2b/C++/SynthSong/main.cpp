@@ -1,24 +1,48 @@
 #include <iostream>
 #include <thread>
 // #include "synth.h"
-#include "additiveSynth.h"
-#include "AMSynth.h"
+#include "melodyGenerator.h"
+
 using namespace std;
 
-
-
-int main(int argc, char **argv){
-
-  cout << "Hey! I will present to you some synths. \nHere we go!\n" << endl;
-
-  AdditiveSynth addsynth1(400.0,1.0);
-  // AMSynth AMsynth1(400.0,3.0,1.0);
-
-  // Synth synth2;
-  // Synth synth3;
-
-  // synth2.FM(200,400,1);
-  // synth3.AM(300,150);
+int main()
+{
+  int noteAmount;
+  MelodyGenerator Mel;
+  MelodyGenerator Mel2;
+  bool test = true;
+  cout << "Hey there, Buckle up for some wild tunes...\n";
+  cout << "In order to play, you will have to choose > 1 < for an AM-synth or > 2 < for an Additive synth. \n";
+  cout << "If you don't like the synth, leave with > q <  \n";
+  cout << "Please enter one of the two numbers: ";
+  while (test){
+    switch (cin.get()) {
+      case '1':
+        test=false;
+        cout << "\nPlease enter the number of notes you want to play:\n";
+        cin >> noteAmount;
+        while (!cin.good()){
+          cin.clear();
+          cin.ignore();
+          cout << "Enter a valid number!\n";
+        }
+        Mel.AMPlay(noteAmount);
+        break;
+      case '2':
+        test=false;
+        cout << "\nPlease enter the number of notes you want to play:\n";
+        cin >> noteAmount;
+        while (!cin.good()){
+          cin.clear();
+          cin.ignore();
+          cout << "Enter a valid number!\n";
+        }
+        Mel2.AddPlay(noteAmount);
+        break;
+      case 'q':
+        test=false;
+    }
+  }
 
   return 0;
-}
+} // main()

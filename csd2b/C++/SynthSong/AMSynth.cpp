@@ -1,14 +1,14 @@
-#include <iostream>
-#include <thread>
-#include "jack_module.h"
-#include "math.h"
-#include "sine.h"
-#include "saw.h"
-#include "oscillator.h"
-#include "unistd.h"
 #include "AMSynth.h"
 
-AMSynth::AMSynth(float frequency1, float frequency2, float amplitude){
+AMSynth::AMSynth(){
+  cout << "AM Synth constructor" << endl;
+}
+
+AMSynth::~AMSynth(){
+  cout << "AM Synth destructor" << endl;
+}
+
+int AMSynth::set(float frequency1, float frequency2, float amplitude){
   cout << "AM Synth constructor" << endl;
   this->frequency1 = frequency1;
   this->frequency2 = frequency2;
@@ -36,15 +36,10 @@ AMSynth::AMSynth(float frequency1, float frequency2, float amplitude){
       outBuf[i] = (sine1.getSample() * ((sine2.getSample()/2)+1/2));
       outBuf[i] *= (1-((volumeEnv1.getSample() + 1) /2));
     }
-  return 0;
+    return 0;
   };
   jack.autoConnect();
-  // TODO change 128 here in the same variable BPM
-  sleep((60.0/128.0)*5); // How long Synth works in SECONDS
+  sleep(20); //works in SECONDS
   jack.end();
-  // return 0;
-}
-
-AMSynth::~AMSynth(){
-  cout << "AM Synth destructor" << endl;
+  return 0;
 }

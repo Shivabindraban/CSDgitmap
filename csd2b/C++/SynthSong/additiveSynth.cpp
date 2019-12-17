@@ -1,17 +1,16 @@
-#include <iostream>
-#include <thread>
-#include "jack_module.h"
-#include "math.h"
-#include "sine.h"
-#include "saw.h"
-#include "pulse.h"
-#include "oscillator.h"
-#include "unistd.h"
 #include "additiveSynth.h"
 
-AdditiveSynth::AdditiveSynth(float frequency, float amplitude){
+AdditiveSynth::AdditiveSynth(){
   cout << "Additive Synth constructor" << endl;
-  this->frequency = frequency;
+}
+
+AdditiveSynth::~AdditiveSynth(){
+  cout << "Additive Synth destructor" << endl;
+}
+
+int AdditiveSynth::set(float frequency1, float amplitude){
+  cout << "Additive Synth constructor" << endl;
+  this->frequency1 = frequency1;
   this->amplitude = amplitude;
 
   // Jack Initialisation
@@ -20,8 +19,8 @@ AdditiveSynth::AdditiveSynth(float frequency, float amplitude){
   double samplerate = jack.getSamplerate();
 
   // additive synthesis with 1 Sine and one Pulse
-  Sine  sine1(  frequency/4 ,amplitude/2  );
-  Pulse pulse1( frequency   ,amplitude/8  ,0.9);
+  Sine  sine1(  frequency1/4 ,amplitude/2  );
+  Pulse pulse1( frequency1   ,amplitude/8  ,0.9);
 
   // TODO change 128 in to a variable BPM
   Saw   volumeEnv1((1.0/(60.0/128.0)), amplitude);
@@ -36,15 +35,10 @@ AdditiveSynth::AdditiveSynth(float frequency, float amplitude){
       outBuf[i] = ((sine1.getSample() + pulse1.getSample()) / 2);
       outBuf[i] *= (1-((volumeEnv1.getSample() + 1) /2));
     }
-  return 0;
+    return 0;
   };
   jack.autoConnect();
-  // TODO change 128 here in the same variable BPM
-  sleep((60.0/128.0)*5); // How long Synth works in SECONDS
+  sleep(20); //works in SECONDS
   jack.end();
-  // return 0;
-}
-
-AdditiveSynth::~AdditiveSynth(){
-  cout << "Additive Synth destructor" << endl;
+  return 0;
 }

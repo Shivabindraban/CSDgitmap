@@ -1,16 +1,17 @@
-#ifndef _ADDSYNTH_H_
-#define _ADDSYNTH_H_
+#include "unistd.h"
+#include "jack_module.h"
+#include "sine.h"
+#include "pulse.h"
+#include "saw.h"
 
 #include <iostream>
 using namespace std;
 
 class AdditiveSynth {
 public:
-  AdditiveSynth(float frequency, float amplitude);
+  AdditiveSynth();
   ~AdditiveSynth();
+  int set(float frequency1, float amplitude);
   float amplitude;
-  float frequency;
-  int argc;
-  char **argv;
+  float frequency1;
 };
-#endif
