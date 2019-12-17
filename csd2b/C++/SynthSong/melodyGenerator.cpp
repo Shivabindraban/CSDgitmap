@@ -12,12 +12,12 @@ void MelodyGenerator::AMPlay(int noteAmount){
   AMSynth AMsynth1;
 
   // Looping untill noteAmount is reached
-  for (int i = 1; i < noteAmount;){
+  for (int i = 0; i < noteAmount;){
     // random_device dev;
     // mt19937 rng(dev());
     // uniform_int_distribution<std::mt19937::result_type> dist(1,3);
     // cout << i << endl;
-    switch (i) {
+    switch ((i%2)+1) {
       case 1:
         AMsynth1.set(300.0,10.0,1.0);
         break;
@@ -36,13 +36,13 @@ void MelodyGenerator::AddPlay(int noteAmount) {
   AdditiveSynth addsynth1;
 
   // Looping untill noteAmount is reached
-  for (int i = 1; i < noteAmount;){
-    switch (i) {
+  for (int i = 0; i < noteAmount;){
+    switch ((i%2)+1) {
       case 1:
         addsynth1.set(300.0,1.0);
         break;
       case 2:
-        addsynth1.set(300.0*(6.0/5.0),1.0);
+        addsynth1.set(300.0*(5.0/4.0),1.0);
         break;
       case 3:
         addsynth1.set(300.0*(3.0/2.0),1.0);

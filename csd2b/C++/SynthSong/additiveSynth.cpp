@@ -38,7 +38,7 @@ int AdditiveSynth::set(float frequency1, float amplitude){
     return 0;
   };
   jack.autoConnect();
-  usleep(4000000);
+  usleep(16000000);
   jack.end();
   return 0;
 }
