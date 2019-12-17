@@ -22,8 +22,8 @@ int AdditiveSynth::set(float frequency1, float amplitude){
   Sine  sine1(  frequency1/4 ,amplitude/2  );
   Pulse pulse1( frequency1   ,amplitude/8  ,0.9);
 
-  // TODO change 128 in to a variable BPM
-  Saw   volumeEnv1((1.0/(60.0/128.0)), amplitude);
+  // TODO change 60 in to a variable BPM
+  Saw   volumeEnv1((1.0/(60.0/60.0)), amplitude);
 
   //assign a function to the JackModule::onProces
   jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
@@ -38,7 +38,7 @@ int AdditiveSynth::set(float frequency1, float amplitude){
     return 0;
   };
   jack.autoConnect();
-  sleep(20); //works in SECONDS
+  usleep(300000);
   jack.end();
   return 0;
 }
