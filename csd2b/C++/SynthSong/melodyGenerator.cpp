@@ -19,16 +19,19 @@ void MelodyGenerator::AMPlay(int noteAmount){
     // cout << i << endl;
     switch ((i%3)+1) {
       case 1:
-        AMsynth1.set(300.0,10.0,1.0);
+        AMsynth1.set(300.0,10.0,0);
+        i++;
         break;
       case 2:
-        AMsynth1.set(300.0*(6.0/5.0),10.0,1.0);
+        AMsynth1.set(300.0*(6.0/5.0),10.0,0);
+        i++;
         break;
       case 3:
-        AMsynth1.set(300.0*(3.0/2.0),10.0,1.0);
+        AMsynth1.set(300.0*(3.0/2.0),10.0,0);
+        i++;
         break;
     }
-    i++;
+
   }
 }
 

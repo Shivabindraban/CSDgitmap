@@ -2,7 +2,6 @@
 #include <thread>
 // #include "synth.h"
 #include "melodyGenerator.h"
-#include "jack_module.h"
 
 using namespace std;
 

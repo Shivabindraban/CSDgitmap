@@ -9,6 +9,7 @@ AMSynth::~AMSynth(){
 }
 
 int AMSynth::set(float frequency1, float frequency2, float amplitude){
+  double amplituda;
   cout << "AM Synth constructor" << endl;
   this->frequency1 = frequency1;
   this->frequency2 = frequency2;
@@ -24,7 +25,7 @@ int AMSynth::set(float frequency1, float frequency2, float amplitude){
   Sine  sine2(  frequency2, 0.5);
 
   // TODO change 60 in to a variable BPM
-  Saw   volumeEnv1((1.0/(60.0/60.0)), amplitude);
+  // Saw   volumeEnv1((1.0/(60.0/60.0)), amplitude);
 
   //assign a function to the JackModule::onProces
   jack.onProcess = [&](jack_default_audio_sample_t *inBuf,
@@ -32,14 +33,20 @@ int AMSynth::set(float frequency1, float frequency2, float amplitude){
     for(unsigned int i = 0; i < nframes; i++) {
       sine1.tick(samplerate);
       sine2.tick(samplerate);
-      volumeEnv1.tick(samplerate);
       outBuf[i] = (sine1.getSample() * ((sine2.getSample()/2)+1/2));
-      outBuf[i] *= (1-((volumeEnv1.getSample() + 1) /2));
+      outBuf[i] *= amplituda;
     }
     return 0;
   };
+  // Program runtime used for additive synth did not work
+  // Changed the envelope type, without a saw
   jack.autoConnect();
-  usleep(16000000);
+while(amplituda<1){
+  amplituda+=0.00000001;
+}
+while(amplituda>0){
+  amplituda-=0.00000001;
+}
   jack.end();
   return 0;
 }
