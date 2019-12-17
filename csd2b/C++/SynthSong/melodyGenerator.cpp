@@ -17,7 +17,7 @@ void MelodyGenerator::AMPlay(int noteAmount){
     // mt19937 rng(dev());
     // uniform_int_distribution<std::mt19937::result_type> dist(1,3);
     // cout << i << endl;
-    switch ((i%2)+1) {
+    switch ((i%3)+1) {
       case 1:
         AMsynth1.set(300.0,10.0,1.0);
         break;
@@ -37,7 +37,7 @@ void MelodyGenerator::AddPlay(int noteAmount) {
 
   // Looping untill noteAmount is reached
   for (int i = 0; i < noteAmount;){
-    switch ((i%2)+1) {
+    switch ((i%3)+1) {
       case 1:
         addsynth1.set(300.0,1.0);
         break;
