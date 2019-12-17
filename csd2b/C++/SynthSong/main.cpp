@@ -22,9 +22,8 @@ int main()
         cout << "\nPlease enter the number of notes you want to play:\n";
         cin >> noteAmount;
         while (!cin.good()){
-          cin.clear();
-          cin.ignore();
           cout << "Enter a valid number!\n";
+          cin.clear();
         }
         Mel.AMPlay(noteAmount);
         break;
@@ -33,9 +32,8 @@ int main()
         cout << "\nPlease enter the number of notes you want to play:\n";
         cin >> noteAmount;
         while (!cin.good()){
-          cin.clear();
-          cin.ignore();
           cout << "Enter a valid number!\n";
+          cin.clear();
         }
         Mel2.AddPlay(noteAmount);
         break;
