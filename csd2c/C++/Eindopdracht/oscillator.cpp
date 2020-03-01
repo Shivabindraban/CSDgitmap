@@ -1,8 +1,7 @@
 #include "oscillator.h"
 
 // Constructor & Destructor
-Oscillator::Oscillator(float freq) {
-  this->freq = freq;
+Oscillator::Oscillator() {
 }
 Oscillator::~Oscillator() {
 }
@@ -11,6 +10,12 @@ void Oscillator::setAmplitude(float amplitude) {
   this->amplitude = amplitude;
 }
 
-float Oscillator::getSample() {
-  return sample;
+void Oscillator::setFrequency(float frequency)
+{
+  // TODO add check to see if parameter is valid
+  this->frequency = frequency;
+}
+
+float Oscillator::getFrequency(){
+  return frequency;
 }

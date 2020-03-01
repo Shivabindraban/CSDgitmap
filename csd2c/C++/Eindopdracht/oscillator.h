@@ -10,20 +10,18 @@ using namespace std;
 class Oscillator {
 public:
   // Constructor and destructor
-  Oscillator(float freq);
+  Oscillator();
   ~Oscillator();
-  // Setters
+
+  void tick();
   void setAmplitude(float amplitude);
-  // Return the current sample
-  float getSample();
+  void setFrequency(float frequency);
+  float getFrequency();
 
 protected:
-  float freq;
+  float frequency;
   float amplitude;
-  float phase;
-  // Contains the current sample
-  float sample;
-  float samplerate;
+
 };
 
 #endif

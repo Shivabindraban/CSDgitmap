@@ -3,16 +3,14 @@
 
 
 // Constructor & Destructor
-Sine::Sine(float freq) : Oscillator(freq) {
+Sine::Sine() : Oscillator() {
 }
 Sine::~Sine() {
 }
 
-// sine wave formula
+// Gives a new a samplevalue every new "tick" from the samplerate
 void Sine::tick(double samplerate) {
-  phase += freq / samplerate;
+  phase += frequency / samplerate;
   // Normal Sine
-  // sample = amplitude * (sin(phase * PI_2));
-  // Absolute Sine
-  sample = (((amplitude * (sin(phase * PI_2)))*0.5)+0.5);
+  sample = sin(phase * PI_2);
 }

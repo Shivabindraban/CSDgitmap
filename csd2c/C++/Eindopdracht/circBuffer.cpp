@@ -84,7 +84,7 @@ void CircBuffer::logAllValues()
 {
 	std::cout << "\n______________________ CircBuffer ______________________________\n";
 	std::cout << "CircBuffer - buffer contains: \n";
-	for (int i = 0; i < m_size - 1; i++)
+	for (int i = 0; i < (m_size - 1); i++)
 	{
 		std::cout << m_buffer[i] << ", ";
 	}

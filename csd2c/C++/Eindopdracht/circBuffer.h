@@ -40,6 +40,8 @@ public:
 		if (head >= m_size) head -= m_size;
 	}
 
+	inline void incrementReadH()	{
+	}
 
 
 	// debug methods

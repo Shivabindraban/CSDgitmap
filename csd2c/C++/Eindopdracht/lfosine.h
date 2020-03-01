@@ -1,14 +1,14 @@
-#ifndef _SIN_H_
-#define _SIN_H_
+#ifndef _LFOSIN_H_
+#define _LFOSIN_H_
 #include <iostream>
 using namespace std;
 #include "oscillator.h"
 
-class Sine : public Oscillator {
+class LFOsine : public Oscillator {
 public:
  // Constructor and destructor
- Sine();
- ~Sine();
+ LFOsine();
+ ~LFOsine();
  // Calculation of sine wave
  void tick(double samplerate);
  float getSample();
