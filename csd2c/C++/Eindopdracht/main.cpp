@@ -21,7 +21,7 @@ int main(int argc,char **argv)
   float samplerate = jack.getSamplerate();
 
   // Flanger(samplerate,feedback,lfoFreq,lfoDepth,drywetmix)
-  Flanger flanger1(samplerate, 70, 1, 50, 90);
+  Flanger flanger1(samplerate, 80, 0.1, 50, 90);
 
   //assign a function to the JackModule::onProces
   jack.onProcess = [&](jack_default_audio_sample_t *inBuf,

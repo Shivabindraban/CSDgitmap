@@ -15,7 +15,7 @@ public:
 
   Flanger(float samplerate, int feedback, float lfoFreq, float lfoDepth, int drywetmix);
   ~Flanger();
-  float samplerate;
+
   void setFeedback(int feedback);
   void setLfoFreq(float lfoFreq);
   void setLfoDepth(float lfoDepth);
@@ -25,6 +25,7 @@ public:
 
 protected:
   int numSamplesFlanger;
+  float samplerate;
   int feedback;
   float lfoFreq;
   float lfoDepth;

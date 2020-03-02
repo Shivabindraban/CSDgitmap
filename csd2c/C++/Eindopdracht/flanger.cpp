@@ -19,6 +19,7 @@ Flanger::Flanger(float samplerate, int feedback, float lfoFreq, float lfoDepth, 
   //Buffer must be twice as long as desired flanger.
   buffer.resetSize(numSamplesFlanger * 2);
   buffer.setDistanceRW(numSamplesFlanger);
+  flangerLFOsine1.setFrequency(lfoFreq);
 
 }
 
@@ -31,6 +32,7 @@ void Flanger::setFeedback(int feedback){
 
 void Flanger::setLfoFreq(float lfoFreq){
   this->lfoFreq = lfoFreq;
+  flangerLFOsine1.setFrequency(lfoFreq);
 }
 
 void Flanger::setLfoDepth(float lfoDepth){
