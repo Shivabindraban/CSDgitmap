@@ -5,9 +5,9 @@
 #include "circBuffer.h"
 #include "flanger.h"
 
-// 10 seconds if samplerate = 44100
-#define MAX_DELAY_SIZE 441000
-#define DELAY_TIME_SEC 3.0f
+// // 10 seconds if samplerate = 44100
+// #define MAX_DELAY_SIZE 441000
+// #define DELAY_TIME_SEC 3.0f
 
 #define PI_2 6.28318530717959
 
