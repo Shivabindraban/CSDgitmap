@@ -4,12 +4,32 @@
 #include "math.h"
 #include "circBuffer.h"
 #include "flanger.h"
+#include "osc.h"
 
-// // 10 seconds if samplerate = 44100
-// #define MAX_DELAY_SIZE 441000
-// #define DELAY_TIME_SEC 3.0f
+float oscLfoFreq;
+float oscLfoDepth;
 
 #define PI_2 6.28318530717959
+
+// subclass OSC into a local class so we can provide our own callback
+class localOSC : public OSC
+{
+  int realcallback(const char *path,const char *types,lo_arg **argv,int argc)
+  {
+  // osc "paramater" name
+  string msgpath=path;
+    // if osc "parameter" name is /oscLfoFreq
+    if(!msgpath.compare("/oscLfoFreq")){
+      oscLfoFreq = argv[0]->f;
+    }
+    // if osc "parameter" name is /oscLfoDepth
+    if(!msgpath.compare("/oscLfoDepth")){
+      oscLfoDepth = argv[0]->f;
+    }
+    return 0;
+  }
+};
+
 
 int main(int argc,char **argv)
 {
@@ -20,6 +40,15 @@ int main(int argc,char **argv)
   jack.init(argv[0]);
   float samplerate = jack.getSamplerate();
 
+  // setting up OSC server
+  localOSC osc;
+  string serverport="10024";
+  osc.init(serverport);
+  osc.set_callback("/oscLfoFreq","f");
+  osc.set_callback("/oscLfoDepth","f");
+  osc.start();
+  cout << "Listening on port " << serverport << endl;
+
   // Flanger(samplerate,feedback,lfoFreq,lfoDepth,drywetmix)
   Flanger flanger1(samplerate, 80, 0.1, 50, 90);
 
@@ -28,6 +57,12 @@ int main(int argc,char **argv)
      jack_default_audio_sample_t *outBufL, jack_default_audio_sample_t *outBufR, jack_nframes_t nframes) {
 
     for(unsigned int i = 0; i < nframes; i++) {
+
+      //variables received over OSC
+      flanger1.setLfoFreq(oscLfoFreq);
+      cout << oscLfoFreq << " " << oscLfoDepth  <<endl;
+      flanger1.setLfoDepth(oscLfoDepth);
+
       outBufL[i] = flanger1.getSample(inBuf[i]);
       outBufR[i] = flanger1.getSample(inBuf[i]);
       // inverted
@@ -41,8 +76,6 @@ int main(int argc,char **argv)
   cout << "\n\nPress 'q' when you want to quit the program.\n";
   cout << "\n\nPress 'f' to change the feedback amount.\n";
   cout << "\n\nPress 'm' to change the dry/wet mix.\n";
-  cout << "\n\nPress 'l' to change the LFO frequency.\n";
-  cout << "\n\nPress 'd' to change the modulation Depth for the LFO.\n";
   bool running = true;
   while (running)
   {
@@ -89,44 +122,6 @@ int main(int argc,char **argv)
             };
           };
         flanger1.setDryWetMix(drywetmix);
-        break;
-
-      case 'l':
-        float lfoFreq;
-        cout << "Enter any (float) number between 0 and 5: ";
-        while(true)
-          {
-            cin >> lfoFreq;
-            if(lfoFreq >= 0 && lfoFreq <= 5){
-              cout << "The LFO frequency is set @ " << lfoFreq<< "Hz" << endl ;
-              break;
-            }
-            else {
-              cin.clear();
-              cin.ignore();
-              cout << "Please enter a number between 0 and 5" << endl;
-            };
-          };
-        flanger1.setLfoFreq(lfoFreq);
-        break;
-
-      case 'd':
-        float lfoDepth;
-        cout << "Enter any positive number between 0 and 200: ";
-        while(true)
-          {
-            cin >> lfoDepth;
-            if(lfoFreq >= 0 && lfoFreq <= 200){
-              cout << "The LFO depth is set @ " << lfoDepth<< endl ;
-              break;
-            }
-            else {
-              cin.clear();
-              cin.ignore();
-              cout << "Please enter a positive number between 0 and 200" << endl;
-            };
-          };
-        flanger1.setLfoDepth(lfoDepth);
         break;
     }
   }

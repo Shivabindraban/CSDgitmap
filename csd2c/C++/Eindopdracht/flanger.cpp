@@ -1,18 +1,17 @@
 #include <thread>
 #include <iostream>
 #include "flanger.h"
-#include "lfosine.h"
+#include "lfo_sine.h"
 #include "oscillator.h"
 #include "jack_module.h"
 #include "math.h"
 
-Flanger::Flanger(float samplerate, int feedback, float lfoFreq, float lfoDepth, int drywetmix)
+Flanger::Flanger(float samplerate, int feedback, float lfoFreq, float lfoDepth)
 {
   this->samplerate = samplerate;
   this->feedback = feedback;
   this->lfoFreq = lfoFreq;
   this->lfoDepth = lfoDepth;
-  this->drywetmix = drywetmix;
 
   //Delay time for a flanger starts at 5ms, hence *0.005
   numSamplesFlanger = samplerate * 0.005;
@@ -39,10 +38,6 @@ void Flanger::setLfoDepth(float lfoDepth){
   this->lfoDepth = lfoDepth;
 }
 
-void Flanger::setDryWetMix(int drywetmix){
-  this->drywetmix = drywetmix;
-}
-
 /*
 For every tick in the samplerate, the Input will be written to the buffer
 During this tick the readhead position will be determined and modulated by the sine LFOsine
@@ -56,7 +51,7 @@ float Flanger::getSample(float input){
   flangerLFOsine1.tick(samplerate);
   buffer.write(input + output * (float)(feedback/100.0));
   buffer.incrWriteH();;
-  output = buffer.read() * (100.0/drywetmix) + input * (1-(100.0/drywetmix));
+  output = buffer.read();
   buffer.incrReadH();
   return output;
 }

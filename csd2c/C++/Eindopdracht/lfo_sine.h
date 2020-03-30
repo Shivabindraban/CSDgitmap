@@ -4,11 +4,11 @@
 using namespace std;
 #include "oscillator.h"
 
-class LFOsine : public Oscillator {
+class Lfo_sine : public Oscillator {
 public:
  // Constructor and destructor
- LFOsine();
- ~LFOsine();
+ Lfo_sine();
+ ~Lfo_sine();
  // Calculation of sine wave
  void tick(double samplerate);
  float getSample();

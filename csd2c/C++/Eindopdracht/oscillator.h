@@ -12,16 +12,19 @@ public:
   // Constructor and destructor
   Oscillator();
   ~Oscillator();
-
-  void tick();
-  void setAmplitude(float amplitude);
+  // Setters
   void setFrequency(float frequency);
-  float getFrequency();
+  void setAmplitude(float amplitude);
+  // Return the current sample
+  float getSample();
 
 protected:
   float frequency;
   float amplitude;
-
+  float phase;
+  // Contains the current sample
+  float sample;
+  float samplerate;
 };
 
 #endif
