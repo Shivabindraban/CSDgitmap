@@ -12,5 +12,4 @@ NOTE: THE project FILES WERE TOO BIG TO UPLOAD. Hence I only uploaded the code I
 They can however be found in the link down below.
 
 # Link to Demo, Audio Flow Diagram, System Diagram and code
-https://drive.google.com/drive/folders/1-AmszBGoUmAiu1er9qx3cU4byMWLRZBB?usp=sharing 
-
+https://drive.google.com/open?id=1-AmszBGoUmAiu1er9qx3cU4byMWLRZBB
