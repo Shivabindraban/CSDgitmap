@@ -3,7 +3,7 @@
 //==============================================================================
 MainComponent::MainComponent()
 {
-    setSize (800, 900);
+    setSize (700, 800);
 }
 MainComponent::~MainComponent()
 {
