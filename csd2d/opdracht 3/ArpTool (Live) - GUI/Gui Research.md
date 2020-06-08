@@ -1,4 +1,4 @@
-﻿Gui Prototype - Arping (Live)
+# Gui Prototype - Arping (Live)
   
 
 This is a screenshot of an arp(tool) made with MAX MSP. This tool gives you the opportunity to alter multiple variables generally used in arps. This tool can be used in a (live)performance, because the arp is played under a customizable beat.
@@ -6,12 +6,12 @@ This is a screenshot of an arp(tool) made with MAX MSP. This tool gives you the 
 
 
 
-Current interaction experience
+# Current interaction experience
 As the designer on the patch, I am biased. Meaning, I know how the patch works and what everything does. However, the user flow is not that fluent. When starting up the patch, there is no clear starting point. In fact, the soundflow is initiated when clicking the speaker icon down under. After that, you are able to play the (saw) synth. You will notice that still nothing is going on, because you have to toggle the On/Off button besides the Arp Settings textbox. Furthermore, the beat will only start whenever your click on one of the colored buttons. Each number has it’s own rhythm. However, after initializing, the fun can start. You can modify your arp in all kinds of ways and also choose other rhythms for your beat. It would be very helpfull to see the rhythm of your beat for visual feedback. Besides the mentioned variables, it is also possible to add a corresponding bassline and detune your saw synth. It would be nice to modify these oscillators more, like changing the waveform and adding filters. In short, this live arp tool is very fun to play with, but it does take some time to get it up and running. In addition, very little feedback (when changing parameters).
 
 
 ________________
-Which GUI elements work?
+# Which GUI elements work?
 * The individual elements are separated roughly by lines
 This makes it possible to distinguish to which element the parameters between the lines apply.
 
@@ -38,7 +38,7 @@ This helps you to mix the full beat to your own liking. There are volume sliders
 
 
 
-Which GUI elements do not work?
+# Which GUI elements do not work?
 * There is no clear alignment in the GUI;
 * There is no logical user flow, where do you start when opening the tool/plugin?;
 * The On/Off volume button is all the way down;
@@ -65,7 +65,7 @@ Which GUI elements do not work?
 ________________
 
 
-What would I change in design and implementation? In order of importance:
+# What would I change in design and implementation? In order of importance:
 * Improve the workflow of the initialization. 
 The elements must be arranged better and more logically
 * Replacing the keyboard at the bottom
@@ -78,5 +78,5 @@ A uniform style, with the same knob and slider types.
 This will contain of three visible sequences for the three beatlayers: Kick, Clap and Hihat.
 * Adding a knob for filtering the sounds
 
-
+# Making the use more fun
 A way to facilitate a better user flow is to give a lot of visible feedback. This helps to user to understand what he/she is doing. Here we can think of adding arrows to the blocks to make the flow visible.
