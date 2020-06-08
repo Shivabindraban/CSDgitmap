@@ -12,31 +12,23 @@ As the designer on the patch, I am biased. Meaning, I know how the patch works a
 
 ________________
 # Which GUI elements work?
-* The individual elements are separated roughly by lines
+* The individual elements are separated roughly by lines.
 This makes it possible to distinguish to which element the parameters between the lines apply.
 
-
-* A nametag in every concerning block
+* A nametag in every concerning block.
 This helps implicate to which element a variable applies.
 
-
-* Arp variables names
+* Arp variables names.
 The descriptive names help you to understand what each parameter does.
 
-
-* Visibility of the arp variables values
+* Visibility of the arp variables values.
 This gives you instant feedback when adjusting the values. It might also help you to understand and make sense how the arpsound is affected by (change in) this parameter.
 
-
-* The keyboard
+* The keyboard.
 The keyboard makes it easy to see on which note/key the arpeggio is applied. The regarding key is lit up when played.
 
-
-* The volume sliders
+* The volume sliders.
 This helps you to mix the full beat to your own liking. There are volume sliders for every single sound.
-
-
-
 
 # Which GUI elements do not work?
 * There is no clear alignment in the GUI;
@@ -51,19 +43,7 @@ This helps you to mix the full beat to your own liking. There are volume sliders
 * The colouring (of labels) is not cohesive;
 * There is no consistency in the layout of the variables.
 
-
-
-
-
-
-
-
-
-
-
-
 ________________
-
 
 # What would I change in design and implementation? In order of importance:
 * Improve the workflow of the initialization. 
