@@ -5,28 +5,45 @@ MainComponent::MainComponent()
 {
     setSize (900, 900);
 
+    getLookAndFeel().setColour(Slider::thumbColourId, Colours::dimgrey);
+    getLookAndFeel().setColour(Slider::rotarySliderFillColourId, Colours::darkkhaki);
 
+    bpmDial.setRange(60,180,1);
     bpmDial.setSliderStyle(Slider::SliderStyle::Rotary);
     bpmDial.setTextBoxStyle(Slider::TextBoxRight, false, 50,20);
     
+    arpSpeed.setRange(1, 8, 1);
     arpSpeed.setSliderStyle(Slider::SliderStyle::Rotary);
     arpSpeed.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
-    keyScale.setSliderStyle(Slider::SliderStyle::Rotary);
-    keyScale.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+
+    jumpSize.setRange(1, 7, 1);
     jumpSize.setSliderStyle(Slider::SliderStyle::Rotary);
     jumpSize.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+
+    tonalRange.setRange(1, 8, 1);
     tonalRange.setSliderStyle(Slider::SliderStyle::Rotary);
     tonalRange.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+
+    /*
+
+    // TODO = make dropdown menu
+    keyScale.setSliderStyle(Slider::SliderStyle::Rotary);
+    keyScale.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
+
+
+
+    // TODO = make dropdown menu
     setRhythm.setSliderStyle(Slider::SliderStyle::Rotary);
     setRhythm.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
 
+    */
     addAndMakeVisible(bpmDial);
 
     addAndMakeVisible(arpSpeed);
-    addAndMakeVisible(keyScale);
+
     addAndMakeVisible(jumpSize);
     addAndMakeVisible(tonalRange);
-    addAndMakeVisible(setRhythm);
+
 
 
     
@@ -69,10 +86,8 @@ void MainComponent::resized()
     bpmDial.setBounds(headerArea.removeFromLeft(area.getWidth()/2));
 
     arpSpeed.setBounds(area.removeFromLeft(area.getWidth() / 2));
-    keyScale.setBounds(area.removeFromLeft(area.getWidth() / 2));
     jumpSize.setBounds(area.removeFromLeft(area.getWidth() / 2));
     tonalRange.setBounds(area.removeFromLeft(area.getWidth() / 2));
-    setRhythm.setBounds(area.removeFromLeft(area.getWidth() / 2));
 
 
     
