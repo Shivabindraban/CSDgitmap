@@ -1,5 +1,6 @@
 #include "MainComponent.h"
 
+
 //==============================================================================
 MainComponent::MainComponent()
 {
@@ -8,10 +9,6 @@ MainComponent::MainComponent()
     getLookAndFeel().setColour(Slider::thumbColourId, Colours::dimgrey);
     getLookAndFeel().setColour(Slider::rotarySliderFillColourId, Colours::darkkhaki);
 
-    bpmDial.setRange(60,180,1);
-    bpmDial.setSliderStyle(Slider::SliderStyle::Rotary);
-    bpmDial.setTextBoxStyle(Slider::TextBoxRight, false, 50,20);
-    
     arpSpeed.setRange(1, 8, 1);
     arpSpeed.setSliderStyle(Slider::SliderStyle::Rotary);
     arpSpeed.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
@@ -37,7 +34,7 @@ MainComponent::MainComponent()
     setRhythm.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
 
     */
-    addAndMakeVisible(bpmDial);
+
 
     addAndMakeVisible(arpSpeed);
 
@@ -83,7 +80,6 @@ void MainComponent::resized()
     Rectangle<int> area = getLocalBounds();// Rect is windowSize
     Rectangle<int> headerArea = area.removeFromTop(area.getHeight() / 6); // For On/Of, BPM dial and name
 
-    bpmDial.setBounds(headerArea.removeFromLeft(area.getWidth()/2));
 
     arpSpeed.setBounds(area.removeFromLeft(area.getWidth() / 2));
     jumpSize.setBounds(area.removeFromLeft(area.getWidth() / 2));
