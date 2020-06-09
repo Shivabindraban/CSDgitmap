@@ -11,6 +11,7 @@ MainComponent::MainComponent()
 
 
     addAndMakeVisible(headerBlock);
+    addAndMakeVisible(filterBlock);
 
     arpSpeed.setRange(1, 8, 1);
     arpSpeed.setSliderStyle(Slider::SliderStyle::Rotary);
@@ -57,20 +58,21 @@ void MainComponent::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (Colours::bisque);
-    Rectangle<int> totalArea = getLocalBounds();// Rect is windowSize
-    Rectangle<int> headerSectionArea = totalArea.removeFromTop(totalArea.getHeight()/6) ;// Rect is windowSize
-    Rectangle<int> keyBoardSectionArea = totalArea.removeFromBottom(totalArea.getHeight()/6);
 
-    g.setColour(Colours::black);
-    g.drawRect(headerSectionArea);
-    g.drawRect(keyBoardSectionArea);
     
+    g.setColour(Colours::black);
+    g.drawRect(0, 0                    , getWidth()          , (getHeight() / 5) * 1, 2.0); // HeaderBlock
+    g.drawRect(0, (getHeight() / 5) * 1, getWidth()          , (getHeight() / 5) * 1, 2.0); // BeatBlock
+    g.drawRect(0, (getHeight() / 5) * 2, (getWidth() / 3) * 2, (getHeight() / 5) * 2, 2.0); // ArpBlock
+
+    g.drawRect((getWidth() / 3) * 2, (getHeight() / 5) * 2, (getWidth() / 3) * 1, (getHeight() / 5) * 1, 2.0); // Filter
+    g.drawRect((getWidth() / 3) * 2, (getHeight() / 5) * 3, (getWidth() / 3) * 1, (getHeight() / 5) * 1, 2.0); // MasterVolume
 
 
 
 
 
-
+  
 
     g.setFont (Font (40.0f));
     g.setColour (Colours::darkkhaki);
@@ -79,6 +81,8 @@ void MainComponent::paint (Graphics& g)
 
 void MainComponent::resized() 
 {
-    headerBlock.setBounds(0, 0, getWidth(), 200);
+    // Blocksizes and placement
+    headerBlock.setBounds(0, 0, getWidth(), getHeight()/7);
+    filterBlock.setBounds(0, getHeight()/4, getWidth(), 200);
     
 }

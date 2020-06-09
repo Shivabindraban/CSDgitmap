@@ -35,5 +35,6 @@ void HeaderComponent::paint (Graphics& g)
 
 void HeaderComponent::resized()
 {
-    bpmDial.setBounds(20, 40, 150, 100);
+    //Needed to adjust X and Y value from 0 to give room for the textbox
+    bpmDial.setBounds(20, 35, 150, 100); 
 }

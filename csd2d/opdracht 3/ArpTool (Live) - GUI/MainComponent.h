@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include "HeaderComponent.h"
+#include "FilterComponent.h"
 
 //==============================================================================
 /*
@@ -22,7 +23,9 @@ public:
 private:
     //==============================================================================
     HeaderComponent headerBlock;
+    FilterComponent filterBlock;
     
+
     Slider arpSpeed;
     Label arpSpeedLabel;
     Slider jumpSize;

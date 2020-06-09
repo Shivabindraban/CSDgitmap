@@ -14,8 +14,14 @@
 //==============================================================================
 FilterComponent::FilterComponent()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
+    FilterCutOff.setRange(20, 20000, 1);
+    FilterCutOff.setSliderStyle(Slider::SliderStyle::Rotary);
+    FilterCutOff.setTextBoxStyle(Slider::TextBoxLeft, false, 50, 20);
+    addAndMakeVisible(FilterCutOff);
+
+    FilterCutOffLabel.setText("Filter Frequency in Hz", dontSendNotification);
+    FilterCutOffLabel.attachToComponent(&FilterCutOff, false);
+    addAndMakeVisible(FilterCutOffLabel);
 
 }
 
@@ -25,27 +31,10 @@ FilterComponent::~FilterComponent()
 
 void FilterComponent::paint (Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("FilterComponent", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
 }
 
 void FilterComponent::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
-
+    //Needed to adjust X and Y value from 0 to give room for the textbox
+    FilterCutOff.setBounds(20, 20, 150, 100);
 }
