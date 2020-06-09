@@ -9,6 +9,9 @@ MainComponent::MainComponent()
     getLookAndFeel().setColour(Slider::thumbColourId, Colours::dimgrey);
     getLookAndFeel().setColour(Slider::rotarySliderFillColourId, Colours::darkkhaki);
 
+
+    addAndMakeVisible(headerBlock);
+
     arpSpeed.setRange(1, 8, 1);
     arpSpeed.setSliderStyle(Slider::SliderStyle::Rotary);
     arpSpeed.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
@@ -76,15 +79,6 @@ void MainComponent::paint (Graphics& g)
 
 void MainComponent::resized() 
 {
-    
-    Rectangle<int> area = getLocalBounds();// Rect is windowSize
-    Rectangle<int> headerArea = area.removeFromTop(area.getHeight() / 6); // For On/Of, BPM dial and name
-
-
-    arpSpeed.setBounds(area.removeFromLeft(area.getWidth() / 2));
-    jumpSize.setBounds(area.removeFromLeft(area.getWidth() / 2));
-    tonalRange.setBounds(area.removeFromLeft(area.getWidth() / 2));
-
-
+    headerBlock.setBounds(20, 20, 100, 100);
     
 }

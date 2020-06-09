@@ -21,6 +21,8 @@ public:
 
 private:
     //==============================================================================
+    HeaderComponent headerBlock;
+    
     Slider arpSpeed;
     Label arpSpeedLabel;
     Slider jumpSize;
