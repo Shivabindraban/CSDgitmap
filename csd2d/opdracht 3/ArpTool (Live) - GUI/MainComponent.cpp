@@ -79,6 +79,6 @@ void MainComponent::paint (Graphics& g)
 
 void MainComponent::resized() 
 {
-    headerBlock.setBounds(20, 20, 100, 100);
+    headerBlock.setBounds(0, 0, getWidth(), 200);
     
 }

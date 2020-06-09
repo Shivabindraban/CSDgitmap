@@ -14,12 +14,12 @@
 //==============================================================================
 HeaderComponent::HeaderComponent()
 {
-    bpmDial.setRange(60, 128, 1);
+    bpmDial.setRange(60, 200, 1);
     bpmDial.setSliderStyle(Slider::SliderStyle::Rotary);
     bpmDial.setTextBoxStyle(Slider::TextBoxLeft, false, 50, 20);
     addAndMakeVisible(bpmDial);
 
-    bpmLabel.setText("BPM set @ ", dontSendNotification);
+    bpmLabel.setText("BPM", dontSendNotification);
     bpmLabel.attachToComponent(&bpmDial, false);
     addAndMakeVisible(bpmLabel);
 
@@ -35,5 +35,5 @@ void HeaderComponent::paint (Graphics& g)
 
 void HeaderComponent::resized()
 {
-    bpmDial.setBounds(0, 0, 100, 100);
+    bpmDial.setBounds(20, 40, 150, 100);
 }
