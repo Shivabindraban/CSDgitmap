@@ -29,6 +29,12 @@ public:
 private:
     //==============================================================================
     // Your private member variables go here...
+    Slider bpmDial;
+    Slider arpSpeed;
+    Slider keyScale;
+    Slider jumpSize;
+    Slider tonalRange;
+    Slider setRhythm;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
