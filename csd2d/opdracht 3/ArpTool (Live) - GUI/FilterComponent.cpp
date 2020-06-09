@@ -14,14 +14,24 @@
 //==============================================================================
 FilterComponent::FilterComponent()
 {
-    FilterCutOff.setRange(20, 20000, 1);
-    FilterCutOff.setSliderStyle(Slider::SliderStyle::Rotary);
-    FilterCutOff.setTextBoxStyle(Slider::TextBoxLeft, false, 50, 20);
-    addAndMakeVisible(FilterCutOff);
+    filterCutOff.setRange(20, 20000, 1);
+    filterCutOff.setSliderStyle(Slider::SliderStyle::Rotary);
+    filterCutOff.setTextBoxStyle(Slider::TextBoxLeft, false, 50, 20);
+    addAndMakeVisible(filterCutOff);
 
-    FilterCutOffLabel.setText("Filter Frequency in Hz", dontSendNotification);
-    FilterCutOffLabel.attachToComponent(&FilterCutOff, false);
-    addAndMakeVisible(FilterCutOffLabel);
+    filterCutOffLabel.setText("Filter Frequency in Hz", dontSendNotification);
+    filterCutOffLabel.attachToComponent(&filterCutOff, false);
+    addAndMakeVisible(filterCutOffLabel);
+
+
+    filterType.addItem("LowPass", 1);
+    filterType.addItem("HighPass", 2);
+    filterType.addItem("BandPass", 3);
+    addAndMakeVisible(filterType);
+
+    filterTypeLabel.setText("Filter Type:", dontSendNotification);
+    filterTypeLabel.attachToComponent(&filterType, false);
+    addAndMakeVisible(filterTypeLabel);
 
 }
 
@@ -36,5 +46,7 @@ void FilterComponent::paint (Graphics& g)
 void FilterComponent::resized()
 {
     //Needed to adjust X and Y value from 0 to give room for the textbox
-    FilterCutOff.setBounds(20, 20, 150, 100);
+    filterCutOff.setBounds(20, 20, 150, 100);
+    filterType.setBounds(180,20,100,20);
+
 }

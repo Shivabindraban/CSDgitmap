@@ -15,24 +15,7 @@ MainComponent::MainComponent()
     addAndMakeVisible(filterBlock);
     addAndMakeVisible(arpBlock);
     addAndMakeVisible(masterVolBlock);
-
-
-    /*
-
-    // TODO = make dropdown menu
-    keyScale.setSliderStyle(Slider::SliderStyle::Rotary);
-    keyScale.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
-
-
-
-    // TODO = make dropdown menu
-    setRhythm.setSliderStyle(Slider::SliderStyle::Rotary);
-    setRhythm.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
-
-    */
-
-
-    
+   
 }
 MainComponent::~MainComponent()
 {
