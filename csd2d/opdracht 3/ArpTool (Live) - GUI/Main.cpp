@@ -61,7 +61,7 @@ public:
            #if JUCE_IOS || JUCE_ANDROID
             setFullScreen (true);
            #else
-            setResizable (false, true); // The plugin should not be resizable, due to possible overlapping
+            setResizable (false, false); // The plugin should not be resizable, due to possible overlapping
             centreWithSize (getWidth(), getHeight());
            #endif
 

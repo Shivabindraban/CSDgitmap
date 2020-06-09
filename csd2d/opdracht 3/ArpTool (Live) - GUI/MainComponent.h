@@ -4,6 +4,7 @@
 #include "HeaderComponent.h"
 #include "FilterComponent.h"
 #include "ArpComponent.h"
+#include "MasterVolComponent.h"
 
 //==============================================================================
 /*
@@ -26,16 +27,14 @@ private:
     HeaderComponent headerBlock;
     FilterComponent filterBlock;
     ArpComponent arpBlock;
-    
+    MasterVolComponent masterVolBlock;
 
 
     ComboBox arpRhythmSetter;
     ComboBox beatRhythmSetter;
     ComboBox keyScaleSetter;
 
-    Slider arpVol;
-    Slider beatVol;
-    Slider masterVol;
+
 
 
 

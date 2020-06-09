@@ -1,8 +1,8 @@
 /*
   ==============================================================================
 
-    MasterVolComponent.h
-    Created: 9 Jun 2020 4:29:00pm
+    ArpScaleComponent.h
+    Created: 9 Jun 2020 9:10:11pm
     Author:  Shiva
 
   ==============================================================================
@@ -15,21 +15,15 @@
 //==============================================================================
 /*
 */
-class MasterVolComponent    : public Component
+class ArpScaleComponent    : public Component
 {
 public:
-    MasterVolComponent();
-    ~MasterVolComponent();
+    ArpScaleComponent();
+    ~ArpScaleComponent();
 
     void paint (Graphics&) override;
     void resized() override;
 
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MasterVolComponent)
-    Slider  arpVolume;
-    Label   arpVolumeLabel;
-    Slider  beatVolume;
-    Label   beatVolumeLabel;
-    Slider  masterVolume;
-    Label   masterVolumeLabel;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ArpScaleComponent)
 };

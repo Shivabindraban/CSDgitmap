@@ -13,6 +13,7 @@ MainComponent::MainComponent()
     addAndMakeVisible(headerBlock);
     addAndMakeVisible(filterBlock);
     addAndMakeVisible(arpBlock);
+    addAndMakeVisible(masterVolBlock);
 
 
     /*
@@ -40,7 +41,7 @@ MainComponent::~MainComponent()
 void MainComponent::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (Colours::bisque);
+    g.fillAll (Colours::darkgrey);
 
     
     g.setColour(Colours::black); // Block Grid Colour
@@ -62,7 +63,7 @@ void MainComponent::paint (Graphics& g)
   
 
     g.setFont (Font (40.0f));
-    g.setColour (Colours::darkkhaki);
+    g.setColour (Colours::darkgrey);
     g.drawText ("ArpTool (Live)", getLocalBounds(), Justification::centredTop, true);
 }
 
@@ -70,9 +71,10 @@ void MainComponent::resized()
 {
     // Blocksizes and placement
     headerBlock.setBounds(  0                     , 0                           , getWidth()    , getHeight() / 5);
-    filterBlock.setBounds(  (getWidth() / 3) * 2  , ((getHeight() / 5) * 2) + 50, getWidth() / 3, getHeight() / 5);
-
+    
     arpBlock.setBounds(     0                     , ((getHeight() / 5) * 2) + 50, (getWidth() / 3)*2, getHeight() / 5);
 
+    filterBlock.setBounds((getWidth() / 3) * 2, ((getHeight() / 5) * 2) + 50, getWidth() / 3, getHeight() / 5);
+    masterVolBlock.setBounds((getWidth() / 3) * 2, ((getHeight() / 5) * 3)  , getWidth() / 3, getHeight() / 5);
     
 }
