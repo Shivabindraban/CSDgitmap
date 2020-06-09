@@ -32,4 +32,10 @@ private:
     Label   jumpStepsLabel;
     Slider  tonalRange;
     Label   tonalRangeLabel;
+
+    ComboBox  scaleDropDown;
+    Label scaleDropDownLabel;
+
+    ComboBox  arpRhythmDropDown;
+    Label arpRhythmDropDownLabel;
 };

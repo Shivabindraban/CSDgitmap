@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include "HeaderComponent.h"
+#include "BeatComponent.h"
 #include "FilterComponent.h"
 #include "ArpComponent.h"
 #include "MasterVolComponent.h"
@@ -25,6 +26,7 @@ public:
 private:
     //==============================================================================
     HeaderComponent headerBlock;
+    BeatComponent beatBlock;
     FilterComponent filterBlock;
     ArpComponent arpBlock;
     MasterVolComponent masterVolBlock;

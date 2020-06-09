@@ -11,6 +11,7 @@ MainComponent::MainComponent()
 
 
     addAndMakeVisible(headerBlock);
+    addAndMakeVisible(beatBlock);
     addAndMakeVisible(filterBlock);
     addAndMakeVisible(arpBlock);
     addAndMakeVisible(masterVolBlock);
@@ -70,11 +71,11 @@ void MainComponent::paint (Graphics& g)
 void MainComponent::resized() 
 {
     // Blocksizes and placement
-    headerBlock.setBounds(  0                     , 0                           , getWidth()    , getHeight() / 5);
-    
-    arpBlock.setBounds(     0                     , ((getHeight() / 5) * 2) + 50, (getWidth() / 3)*2, getHeight() / 5);
+    headerBlock.setBounds(      0                     , 0                           , getWidth()            , getHeight() / 5);
+    beatBlock.setBounds(        0                     , ((getHeight() / 5) * 1) + 50, getWidth()            , getHeight() / 5);
+    arpBlock.setBounds(         0                     , ((getHeight() / 5) * 2) + 50, (getWidth() / 3)*2    , getHeight() / 5);
 
-    filterBlock.setBounds((getWidth() / 3) * 2, ((getHeight() / 5) * 2) + 50, getWidth() / 3, getHeight() / 5);
-    masterVolBlock.setBounds((getWidth() / 3) * 2, ((getHeight() / 5) * 3)  , getWidth() / 3, getHeight() / 5);
+    filterBlock.setBounds(      (getWidth() / 3) * 2  , ((getHeight() / 5) * 2) + 50, getWidth() / 3        , getHeight() / 5);
+    masterVolBlock.setBounds(   (getWidth() / 3) * 2  , ((getHeight() / 5) * 3)     , getWidth() / 3        , getHeight() / 5);
     
 }

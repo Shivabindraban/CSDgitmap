@@ -14,6 +14,7 @@
 //==============================================================================
 ArpComponent::ArpComponent()
 {
+
     arpSpeed.setRange(1, 8, 1);
     arpSpeed.setSliderStyle(Slider::SliderStyle::Rotary);
     arpSpeed.setTextBoxStyle(Slider::TextBoxLeft, false, 50, 20);
@@ -42,6 +43,33 @@ ArpComponent::ArpComponent()
     tonalRangeLabel.setText("Tonal Range", dontSendNotification);
     tonalRangeLabel.attachToComponent(&tonalRange, false);
     addAndMakeVisible(tonalRangeLabel);
+
+    scaleDropDown.addItem("Aeolian", 1);
+    scaleDropDown.addItem("Blues", 2);
+    scaleDropDown.addItem("Harmonic Major", 3);
+    scaleDropDown.addItem("Ionian", 4);
+    scaleDropDown.addItem("Locrian", 5);
+    scaleDropDown.addItem("Lydian", 6);
+    scaleDropDown.addItem("Additive", 7);
+    addAndMakeVisible(scaleDropDown);
+
+    scaleDropDownLabel.setText("Scale Presets:", dontSendNotification);
+    scaleDropDownLabel.attachToComponent(&scaleDropDown, false);
+    addAndMakeVisible(scaleDropDownLabel);
+
+    arpRhythmDropDown.addItem("Steady Notes", 1);
+    arpRhythmDropDown.addItem("Conga", 2);
+    arpRhythmDropDown.addItem("Son Clave", 3);
+    arpRhythmDropDown.addItem("Mambo", 4);
+    arpRhythmDropDown.addItem("Salsa", 5);
+    arpRhythmDropDown.addItem("Habanero", 6);
+    arpRhythmDropDown.addItem("Phrygian", 7);
+    addAndMakeVisible(arpRhythmDropDown);
+
+    arpRhythmDropDownLabel.setText("Rhythm Presets:", dontSendNotification);
+    arpRhythmDropDownLabel.attachToComponent(&arpRhythmDropDown, false);
+    addAndMakeVisible(arpRhythmDropDownLabel);
+
          
 }
 
@@ -59,5 +87,10 @@ void ArpComponent::resized()
     arpSpeed.setBounds(     20,  20, 150, 100);
     jumpSteps.setBounds(    200, 20, 150, 100);
     tonalRange.setBounds(   400, 20, 150, 100);
+
+    arpRhythmDropDown.setBounds(80, 160, 100, 20);
+    scaleDropDown.setBounds(300, 160, 100, 20);
+
+
 
 }
