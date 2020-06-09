@@ -26,4 +26,10 @@ public:
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ArpComponent)
+    Slider  arpSpeed;
+    Label   arpSpeedLabel;
+    Slider  jumpSteps;
+    Label   jumpStepsLabel;
+    Slider  tonalRange;
+    Label   tonalRangeLabel;
 };

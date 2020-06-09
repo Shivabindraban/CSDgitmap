@@ -12,18 +12,8 @@ MainComponent::MainComponent()
 
     addAndMakeVisible(headerBlock);
     addAndMakeVisible(filterBlock);
+    addAndMakeVisible(arpBlock);
 
-    arpSpeed.setRange(1, 8, 1);
-    arpSpeed.setSliderStyle(Slider::SliderStyle::Rotary);
-    arpSpeed.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
-
-    jumpSize.setRange(1, 7, 1);
-    jumpSize.setSliderStyle(Slider::SliderStyle::Rotary);
-    jumpSize.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
-
-    tonalRange.setRange(1, 8, 1);
-    tonalRange.setSliderStyle(Slider::SliderStyle::Rotary);
-    tonalRange.setTextBoxStyle(Slider::TextBoxBelow, false, 50, 20);
 
     /*
 
@@ -40,13 +30,6 @@ MainComponent::MainComponent()
     */
 
 
-    addAndMakeVisible(arpSpeed);
-
-    addAndMakeVisible(jumpSize);
-    addAndMakeVisible(tonalRange);
-
-
-
     
 }
 MainComponent::~MainComponent()
@@ -60,13 +43,17 @@ void MainComponent::paint (Graphics& g)
     g.fillAll (Colours::bisque);
 
     
-    g.setColour(Colours::black);
-    g.drawRect(0, 0                    , getWidth()          , (getHeight() / 5) * 1, 2.0); // HeaderBlock
-    g.drawRect(0, (getHeight() / 5) * 1, getWidth()          , (getHeight() / 5) * 1, 2.0); // BeatBlock
-    g.drawRect(0, (getHeight() / 5) * 2, (getWidth() / 3) * 2, (getHeight() / 5) * 2, 2.0); // ArpBlock
-
-    g.drawRect((getWidth() / 3) * 2, (getHeight() / 5) * 2, (getWidth() / 3) * 1, (getHeight() / 5) * 1, 2.0); // Filter
-    g.drawRect((getWidth() / 3) * 2, (getHeight() / 5) * 3, (getWidth() / 3) * 1, (getHeight() / 5) * 1, 2.0); // MasterVolume
+    g.setColour(Colours::black); // Block Grid Colour
+    // HeaderBlock Grid
+    g.drawRect(0                    , 0                    , getWidth()          , (getHeight() / 5) * 1, 2.0); 
+    // BeatBlock Grid
+    g.drawRect(0                    , (getHeight() / 5) * 1, getWidth()          , (getHeight() / 5) * 1, 2.0);
+    // ArpBlock Grid
+    g.drawRect(0                    , (getHeight() / 5) * 2, (getWidth() / 3) * 2, (getHeight() / 5) * 2, 2.0); 
+    // FilterBlock Grid
+    g.drawRect((getWidth() / 3) * 2 , (getHeight() / 5) * 2, (getWidth() / 3) * 1, (getHeight() / 5) * 1, 2.0); 
+    // MasterVolumeBlock Grid
+    g.drawRect((getWidth() / 3) * 2 , (getHeight() / 5) * 3, (getWidth() / 3) * 1, (getHeight() / 5) * 1, 2.0); 
 
 
 
@@ -82,7 +69,10 @@ void MainComponent::paint (Graphics& g)
 void MainComponent::resized() 
 {
     // Blocksizes and placement
-    headerBlock.setBounds(0, 0, getWidth(), getHeight()/7);
-    filterBlock.setBounds(0, getHeight()/4, getWidth(), 200);
+    headerBlock.setBounds(  0                     , 0                           , getWidth()    , getHeight() / 5);
+    filterBlock.setBounds(  (getWidth() / 3) * 2  , ((getHeight() / 5) * 2) + 50, getWidth() / 3, getHeight() / 5);
+
+    arpBlock.setBounds(     0                     , ((getHeight() / 5) * 2) + 50, (getWidth() / 3)*2, getHeight() / 5);
+
     
 }

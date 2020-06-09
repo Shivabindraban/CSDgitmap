@@ -3,6 +3,7 @@
 #include <JuceHeader.h>
 #include "HeaderComponent.h"
 #include "FilterComponent.h"
+#include "ArpComponent.h"
 
 //==============================================================================
 /*
@@ -24,14 +25,9 @@ private:
     //==============================================================================
     HeaderComponent headerBlock;
     FilterComponent filterBlock;
+    ArpComponent arpBlock;
     
 
-    Slider arpSpeed;
-    Label arpSpeedLabel;
-    Slider jumpSize;
-    Label jumpSizeLabel;
-    Slider tonalRange;
-    Label tonalRangeLabel;
 
     ComboBox arpRhythmSetter;
     ComboBox beatRhythmSetter;
