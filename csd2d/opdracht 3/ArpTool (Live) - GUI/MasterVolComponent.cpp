@@ -18,6 +18,7 @@ MasterVolComponent::MasterVolComponent()
     arpVolume.setSliderStyle(Slider::SliderStyle::LinearHorizontal);
     arpVolume.setTextBoxStyle(Slider::TextBoxLeft, false, 50, 20);
     addAndMakeVisible(arpVolume);
+  
 
     arpVolumeLabel.setText("Arp Volume", dontSendNotification);
     arpVolumeLabel.attachToComponent(&arpVolume, true);
@@ -56,7 +57,7 @@ void MasterVolComponent::paint (Graphics& g)
 void MasterVolComponent::resized()
 {
     //Needed to adjust X and Y value from 0 to give room for the textbox
-    arpVolume.setBounds(    80, 0   , getWidth()/1.5, 100);
-    beatVolume.setBounds(   80, 50  , getWidth()/1.5, 100);
-    masterVolume.setBounds( 80, 100 , getWidth()/1.5, 100);
+    arpVolume.setBounds(    80, 5   , getWidth()/1.5, 100);
+    beatVolume.setBounds(   80, 55  , getWidth()/1.5, 100);
+    masterVolume.setBounds( 80, 105 , getWidth()/1.5, 100);
 }

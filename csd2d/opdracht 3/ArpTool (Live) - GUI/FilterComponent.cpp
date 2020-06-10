@@ -14,16 +14,18 @@
 //==============================================================================
 FilterComponent::FilterComponent()
 {
+    // Filter Cut off Dial
     filterCutOff.setRange(20, 20000, 1);
     filterCutOff.setSliderStyle(Slider::SliderStyle::Rotary);
     filterCutOff.setTextBoxStyle(Slider::TextBoxLeft, false, 50, 20);
     addAndMakeVisible(filterCutOff);
+    
 
     filterCutOffLabel.setText("Filter Frequency in Hz", dontSendNotification);
     filterCutOffLabel.attachToComponent(&filterCutOff, false);
     addAndMakeVisible(filterCutOffLabel);
 
-
+    // Options to change filtertypes. I did not adjust the mapping accordingly for this
     filterType.addItem("LowPass", 1);
     filterType.addItem("HighPass", 2);
     filterType.addItem("BandPass", 3);

@@ -15,7 +15,7 @@
 BeatComponent::BeatComponent()
 {
     
-    
+    // Adding beatchoices for this dropdown menu
     beatChooseDropDown.addItem("Beat 1", 1);
     beatChooseDropDown.addItem("Beat 2", 2);
     beatChooseDropDown.addItem("Beat 3", 3);
@@ -39,8 +39,13 @@ BeatComponent::~BeatComponent()
 
 void BeatComponent::paint (Graphics& g)
 {
-
-    //Mock Grid
+    /* 
+    Mock Grid. Here I wanted to visualize the individual parts of  the beat patterns.
+    Since there were no "real" beat patterns processed, I drew a mock patterngrid
+    However, given a real pattern with values, I could have given the regarding box another colour,
+    Once the pattern matched the time block in the grid.
+    Ofcourse a time calculation has to take place for the right timing, with the BPM
+    */
     boxWidth = 30;
     boxHeight = 20;
     Rectangle<int>rectArea(250, 40, boxWidth, boxHeight);
@@ -49,7 +54,6 @@ void BeatComponent::paint (Graphics& g)
         g.fillRect(rectArea);
         rectArea.translate(boxWidth, boxHeight); // Placing diagonal
     }
-
     for (int i = 0; i < 16; i++) {
         g.drawRect(250 + (boxWidth * i), boxHeight*1, boxWidth, boxHeight);
         g.drawRect(250 + (boxWidth * i), boxHeight*2, boxWidth, boxHeight);
@@ -60,6 +64,8 @@ void BeatComponent::paint (Graphics& g)
     Rectangle<int>currentArea(250 + 60, 20, boxWidth, boxHeight);
     g.setColour(Colours::black);
     g.fillRect(currentArea);
+
+
 }
 
 void BeatComponent::resized()
