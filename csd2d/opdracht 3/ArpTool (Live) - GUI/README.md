@@ -62,16 +62,21 @@ This will contain of three visible sequences for the three beatlayers: Kick, Cla
 
 
 ## Making the use more fun
-A way to facilitate a better user flow is to give a lot of visible feedback. This helps to user to understand what he/she is doing. Here we can think of adding arrows to the blocks to make the flow visible.
+A way to facilitate a better user flow is to give a lot of visible feedback. This helps to user to understand what he/she is doing. 
 
 # MockUp
-In this mockup, the allignment is way better. Also, only the associated parts are arranged in the specific space. This helps to understand how every element cooperates and alters the sound. In this mockup the visual feedback is more present
+![](MockUp.jpg)
+In this mockup, the allignment is way better. Also, only the associated parts are arranged in the specific space. This helps to understand how every element cooperates and alters the sound. EXCUSE ME FOR MY BAD GRAPHIC DESIGN SKILLS!!
 
 # Prototype
+![](ProtoType.png)
 
 ## Program Language
 I have chosen JUCE (C++) to make the prototype. The reason I chose this, has to do with the fact that JUCE is specificly designed for making Audio Plugins. In fact, when starting up JUCE, you can even choose "GUI application" as projecttype. Hence JUCE seems very suitable
 
 ## Process
-Working in a framework is a challenge I can say. It took some time for me to understand where I had to place code in order to work accordingly. I had to watch a lot of Juce Tutorials and had to browse in the API section a lot. By doing this and trying things my self, I was able to draw a grid. This Grid was meant as a demarcation for the distinctive elements. After this, I added layouts for every variable I was going to put in the Prototype. Here, I had to decide what layout would work best. As an example, in the Max project I used a dialknob to select a new tonal Scale. In this example, a Drop down menu was more suitable. After making all the variables, I put them each in their own new componentfiles. I did my best to get a long way, but unfortunately, I was not able to realise every aspect from the Visual Mock Up in the given amount of time. I really wanted to add a Midikeyboard at the bottom of the GUI. Furthermore, I wanted to a working beatgrid. I want to include these things in my next iteration, given more time.
+Working in a framework is a challenge I can say. It took some time for me to understand where I had to place code in order to work accordingly. I had to watch a lot of Juce Tutorials and had to browse in the API section a lot. By doing this and trying things my self, I was able to draw a grid. This Grid was meant as a demarcation for the distinctive elements. After this, I added layouts for every variable I was going to put in the Prototype. Here, I had to decide what layout would work best. As an example, in the Max project I used a dialknob to select a new tonal Scale. In this example, a Drop down menu was more suitable. After making all the variables, I put them each in their own new componentfiles. I did my best to get a long way, but unfortunately, I was not able to realise every aspect from the Visual Mock Up in the given amount of time. I really wanted to add a Midikeyboard at the bottom of the GUI. Furthermore, I wanted to add a working beatgrid. I want to include these things in my next iteration, given more time.
 However, I am happy with the way I structurized the layout and how I chose the variable layouts. For me this, increased the workflow, which was essential.
+
+## code
+In this repository.
