@@ -2,6 +2,7 @@
   
 
 This is a screenshot of an arp(tool) made with MAX MSP. This tool gives you the opportunity to alter multiple variables generally used in arps. This tool can be used in a (live)performance, because the arp is played under a customizable beat.
+![](images/ArpBeatGen.png)
 
 
 
